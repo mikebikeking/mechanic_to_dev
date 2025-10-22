@@ -112,21 +112,21 @@ export function Contact() {
                 <label htmlFor="name" className="block text-gray-900 dark:text-textPrimary font-heading text-sm mb-2">
                   NAME
                 </label>
-                <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required className="w-full px-4 py-3 bg-white dark:bg-gunmetal border-2 border-blue-300 dark:border-blueprint/30 text-gray-900 dark:text-textPrimary focus:border-blue-600 dark:focus:border-gold focus:outline-none transition-colors" placeholder="Your name" disabled={isSending} />
+                <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required className="w-full px-4 py-3 min-h-[48px] text-base bg-white dark:bg-gunmetal border-2 border-blue-300 dark:border-blueprint/30 text-gray-900 dark:text-textPrimary focus:border-blue-600 dark:focus:border-gold focus:outline-none transition-colors" placeholder="Your name" disabled={isSending} />
               </div>
               {/* Email Input */}
               <div>
                 <label htmlFor="email" className="block text-gray-900 dark:text-textPrimary font-heading text-sm mb-2">
                   EMAIL
                 </label>
-                <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required className="w-full px-4 py-3 bg-white dark:bg-gunmetal border-2 border-blue-300 dark:border-blueprint/30 text-gray-900 dark:text-textPrimary focus:border-blue-600 dark:focus:border-gold focus:outline-none transition-colors" placeholder="your.email@example.com" disabled={isSending} />
+                <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required className="w-full px-4 py-3 min-h-[48px] text-base bg-white dark:bg-gunmetal border-2 border-blue-300 dark:border-blueprint/30 text-gray-900 dark:text-textPrimary focus:border-blue-600 dark:focus:border-gold focus:outline-none transition-colors" placeholder="your.email@example.com" disabled={isSending} />
               </div>
               {/* Message Textarea */}
               <div>
                 <label htmlFor="message" className="block text-gray-900 dark:text-textPrimary font-heading text-sm mb-2">
                   MESSAGE
                 </label>
-                <textarea id="message" name="message" value={formData.message} onChange={handleChange} required rows={6} className="w-full px-4 py-3 bg-white dark:bg-gunmetal border-2 border-blue-300 dark:border-blueprint/30 text-gray-900 dark:text-textPrimary focus:border-blue-600 dark:focus:border-gold focus:outline-none transition-colors resize-none" placeholder="Tell me about your project..." disabled={isSending} />
+                <textarea id="message" name="message" value={formData.message} onChange={handleChange} required rows={6} className="w-full px-4 py-3 min-h-[120px] text-base bg-white dark:bg-gunmetal border-2 border-blue-300 dark:border-blueprint/30 text-gray-900 dark:text-textPrimary focus:border-blue-600 dark:focus:border-gold focus:outline-none transition-colors resize-none" placeholder="Tell me about your project..." disabled={isSending} />
               </div>
               {/* Submission Button */}
               <MagneticButton
@@ -134,7 +134,7 @@ export function Contact() {
                 intensity={0.35}
                 disabled={isSending}
                 className={`
-                  w-full px-6 py-4 font-heading text-lg transition-all duration-300 transform flex items-center justify-center gap-2
+                  w-full px-6 py-4 min-h-[52px] font-heading text-lg transition-all duration-300 transform flex items-center justify-center gap-2
                   ${isSending 
                     ? 'bg-blue-400 dark:bg-blueprint text-white dark:text-gunmetal cursor-not-allowed opacity-70' 
                     : 'bg-blue-600 dark:bg-gold text-white dark:text-gunmetal hover:bg-blue-700 dark:hover:bg-torch shadow-lg hover:shadow-xl hover:shadow-blue-600/50 dark:hover:shadow-gold/50'
@@ -190,7 +190,7 @@ export function Contact() {
                   const borderClass = colorClasses[social.color as keyof typeof colorClasses];
                   const iconClass = iconColorClasses[social.color as keyof typeof iconColorClasses];
                   
-                  return <a key={index} href={social.url} target="_blank" rel="noopener noreferrer" className={`group p-4 bg-blue-50 dark:bg-gunmetal border-2 ${borderClass} transition-all duration-300 hover:-translate-y-1`} aria-label={social.label}>
+                  return <a key={index} href={social.url} target="_blank" rel="noopener noreferrer" className={`group p-4 bg-blue-50 dark:bg-gunmetal border-2 ${borderClass} transition-all duration-300 hover:-translate-y-1 min-h-[48px] min-w-[48px] flex items-center justify-center social-link`} aria-label={social.label}>
                     <social.icon className={`${iconClass} group-hover:scale-110 transition-transform`} size={24} />
                   </a>;
                 })}

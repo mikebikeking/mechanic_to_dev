@@ -52,7 +52,7 @@ export function Navigation() {
           <div className="flex-shrink-0">
             <button
               onClick={() => scrollToSection('home')}
-              className="text-2xl font-heading text-blue-700 dark:text-gold hover:text-blue-600 dark:hover:text-torch transition-colors cursor-pointer"
+              className="text-2xl font-heading text-blue-700 dark:text-gold hover:text-blue-600 dark:hover:text-torch transition-colors cursor-pointer min-h-[44px] min-w-[44px] flex items-center justify-center"
               aria-label="Go to home"
             >
               MK
@@ -66,7 +66,7 @@ export function Navigation() {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`px-3 py-2 text-sm font-medium transition-colors ${
+                  className={`px-3 py-2 text-sm font-medium transition-colors min-h-[44px] flex items-center ${
                     activeSection === item.id
                       ? 'text-blue-700 dark:text-gold border-b-2 border-blue-700 dark:border-gold'
                       : 'text-gray-700 dark:text-textPrimary hover:text-blue-600 dark:hover:text-gold'
@@ -86,7 +86,8 @@ export function Navigation() {
             <ThemeToggle />
             <button
               onClick={() => dispatch(appActions.setMenuOpen(!isMenuOpen))}
-              className="text-gray-700 dark:text-textPrimary hover:text-blue-600 dark:hover:text-gold p-2"
+              className="text-gray-700 dark:text-textPrimary hover:text-blue-600 dark:hover:text-gold p-2 min-h-[44px] min-w-[44px] flex items-center justify-center"
+              aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             >
               {isMenuOpen ? <XIcon size={24} /> : <MenuIcon size={24} />}
             </button>
@@ -97,12 +98,12 @@ export function Navigation() {
       {/* Mobile Navigation */}
       {isMenuOpen && (
         <div className="md:hidden bg-white dark:bg-gunmetal border-t border-blue-200 dark:border-blueprint/20">
-          <div className="px-2 pt-2 pb-3 space-y-1">
+          <div className="px-2 pt-2 pb-3 space-y-2">
             {navItems.map(item => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`block w-full text-left px-3 py-2 text-base font-medium ${
+                className={`block w-full text-left px-4 py-3 text-base font-medium min-h-[48px] mobile-nav-link ${
                   activeSection === item.id
                     ? 'text-blue-700 dark:text-gold bg-blue-50 dark:bg-blueprint/10'
                     : 'text-gray-700 dark:text-textPrimary hover:text-blue-600 dark:hover:text-gold hover:bg-blue-50 dark:hover:bg-blueprint/5'

@@ -10,8 +10,8 @@ import { TechIcon } from "./TechIcon";
 export function Hero() {
   const { displayedText } = useTypingEffect(
     "20 years of mechanical mastery, now building pixel-perfect web experiences",
-    50,
-    1000
+    40,
+    3500
   );
   
   const mouseX = useMotionValue(0);

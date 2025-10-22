@@ -11,6 +11,7 @@ import { PageTransition } from './components/PageTransition';
 import { useSmoothScroll } from './hooks/useSmoothScroll';
 import { ScrollProgress } from './components/ScrollProgress';
 import { LogoAnimation } from './components/LogoAnimation';
+import { StructuredData } from './components/StructuredData';
 
 export function App() {
   useSmoothScroll();
@@ -18,6 +19,7 @@ export function App() {
   return (
     <AppProvider>
       <ErrorBoundary>
+        <StructuredData />
         <LogoAnimation />
         <LoadingAnimation />
         <ScrollProgress />
