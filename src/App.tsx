@@ -12,6 +12,7 @@ import { useSmoothScroll } from './hooks/useSmoothScroll';
 import { ScrollProgress } from './components/ScrollProgress';
 import { LogoAnimation } from './components/LogoAnimation';
 import { StructuredData } from './components/StructuredData';
+import { Analytics } from "@vercel/analytics/react";
 
 export function App() {
   useSmoothScroll();
@@ -19,6 +20,7 @@ export function App() {
   return (
     <AppProvider>
       <ErrorBoundary>
+        <Analytics />
         <StructuredData />
         <LogoAnimation />
         <LoadingAnimation />
