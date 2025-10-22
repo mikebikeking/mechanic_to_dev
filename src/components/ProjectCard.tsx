@@ -3,6 +3,7 @@ import { Project } from '../data/projects';
 import { OptimizedImage } from './OptimizedImage';
 import { MagneticLink } from './MagneticLink';
 import Tilt from 'react-parallax-tilt';
+import { TechIcon } from './TechIcon';
 
 interface ProjectCardProps {
   project: Project;
@@ -52,12 +53,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             
             <div className="flex flex-wrap gap-2 mb-4">
               {project.tech.map((tech, techIndex) => (
-                <span
-                  key={techIndex}
-                  className="px-2 py-1 bg-blue-100 dark:bg-blueprint/20 text-blue-700 dark:text-blueprint text-xs font-mono border border-blue-300 dark:border-blueprint/30"
-                >
-                  {tech}
-                </span>
+                <TechIcon key={techIndex} tech={tech} size={16} showLabel={true} />
               ))}
             </div>
             

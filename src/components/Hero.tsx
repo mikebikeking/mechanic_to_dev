@@ -5,6 +5,7 @@ import { MagneticButton } from "./MagneticButton";
 import { MagneticLink } from "./MagneticLink";
 import { ParticleEffect } from "./ParticleEffect";
 import { useTypingEffect } from "../hooks/useTypingEffect";
+import { TechIcon } from "./TechIcon";
 
 export function Hero() {
   const { displayedText } = useTypingEffect(
@@ -358,14 +359,14 @@ export function Hero() {
             className="pt-8 flex flex-wrap items-center justify-center gap-3"
           >
             {[
-              "JavaScript (ES6+)",
+              "JavaScript",
               "React",
               "TypeScript",
               "Next.js",
-              "Git & Github",
+              "Git",
               "TailwindCSS",
             ].map((tech) => (
-              <motion.span
+              <motion.div
                 key={tech}
                 initial={{
                   opacity: 0,
@@ -381,13 +382,11 @@ export function Hero() {
                 }}
                 whileHover={{
                   scale: 1.1,
-                  borderColor: "rgba(255, 214, 10, 0.5)",
-                  color: "#FFD60A",
                 }}
-                className="px-3 py-1 bg-blue-50 dark:bg-gunmetal/50 border border-blue-200 dark:border-blueprint/30 text-gray-700 dark:text-textSecondary text-xs font-mono backdrop-blur-sm transition-colors cursor-default"
+                className="cursor-default"
               >
-                {tech}
-              </motion.span>
+                <TechIcon tech={tech} size={18} showLabel={true} />
+              </motion.div>
             ))}
           </motion.div>
         </div>
