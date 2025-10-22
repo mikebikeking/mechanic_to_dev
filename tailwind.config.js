@@ -1,4 +1,5 @@
 export default {
+  darkMode: 'class',
   content: [
   './index.html',
   './src/**/*.{js,ts,jsx,tsx}'
@@ -13,6 +14,11 @@ export default {
         blueprint: '#0A84FF',
         textPrimary: '#F5F5F7',
         textSecondary: '#8E8E93',
+        // Light mode colors
+        lightBg: '#FFFFFF',
+        lightBgSecondary: '#F5F5F7',
+        lightText: '#1C1C1E',
+        lightTextSecondary: '#6E6E73',
       },
       fontFamily: {
         heading: ['Bebas Neue', 'Oswald', 'sans-serif'],

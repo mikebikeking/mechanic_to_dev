@@ -1,4 +1,3 @@
-// components/BikePathBackground.tsx
 import { useScroll, useTransform, motion } from 'framer-motion';
 
 export function BikePathBackground() {
@@ -7,10 +6,9 @@ export function BikePathBackground() {
   // Different speeds for parallax layers
   const y1 = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);   // Slowest
   const y2 = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);  // Medium
-  const y3 = useTransform(scrollYProgress, [0, 1], ['0%', '150%']);  // Fastest
 
   return (
-    <div className="fixed inset-0 -z-10 overflow-hidden bg-black">
+    <div className="fixed inset-0 z-0 overflow-hidden bg-white dark:bg-black transition-colors duration-300">
       {/* Layer 1 - Slowest (Background Grid) */}
       <motion.div
         style={{ y: y1 }}
@@ -34,8 +32,9 @@ export function BikePathBackground() {
               <path
                 d="M 100 0 L 0 0 0 100"
                 fill="none"
-                stroke="rgba(255, 214, 10, 0.05)"
+                stroke="currentColor"
                 strokeWidth="1"
+                className="text-blue-300/50 dark:text-gold/15"
               />
             </pattern>
           </defs>
@@ -53,66 +52,47 @@ export function BikePathBackground() {
           xmlns="http://www.w3.org/2000/svg"
           preserveAspectRatio="none"
         >
-          {/* Center dashed line - gold */}
+          {/* Center dashed line - gold/blue */}
           <line
             x1="50%"
             y1="0"
             x2="50%"
             y2="100%"
-            stroke="rgba(255, 214, 10, 0.3)"
+            stroke="currentColor"
             strokeWidth="4"
             strokeDasharray="60 40"
+            className="text-blue-500/50 dark:text-gold/50"
           />
           
-          {/* Left lane line - white */}
+          {/* Left lane line */}
           <line
             x1="30%"
             y1="0"
             x2="30%"
             y2="100%"
-            stroke="rgba(255, 255, 255, 0.15)"
+            stroke="currentColor"
             strokeWidth="2"
             strokeDasharray="30 20"
+            className="text-gray-400/40 dark:text-white/30"
           />
           
-          {/* Right lane line - white */}
+          {/* Right lane line */}
           <line
             x1="70%"
             y1="0"
             x2="70%"
             y2="100%"
-            stroke="rgba(255, 255, 255, 0.15)"
+            stroke="currentColor"
             strokeWidth="2"
             strokeDasharray="30 20"
+            className="text-gray-400/40 dark:text-white/30"
           />
         </svg>
       </motion.div>
 
-      {/* Layer 3 - Fastest (Small accent dots) */}
-      <motion.div
-        style={{ y: y3 }}
-        className="absolute inset-0"
-      >
-        <svg
-          className="absolute inset-0 w-full h-[200vh]"
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="none"
-        >
-          {/* Small circular markers along the center line */}
-          {Array.from({ length: 20 }).map((_, i) => (
-            <circle
-              key={i}
-              cx="50%"
-              cy={`${i * 5}%`}
-              r="2"
-              fill="rgba(255, 214, 10, 0.2)"
-            />
-          ))}
-        </svg>
-      </motion.div>
 
       {/* Gradient overlay for depth */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-white/40 dark:from-black/40 dark:via-transparent dark:to-black/60 pointer-events-none transition-colors duration-300" />
     </div>
   );
 }

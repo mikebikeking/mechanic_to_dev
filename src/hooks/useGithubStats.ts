@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { githubService } from '../services/github.service';
 
 interface GithubStats {
@@ -25,7 +25,7 @@ export const useGithubStats = (username: string): UseGithubStatsReturn => {
   const [error, setError] = useState<Error | null>(null);
   const abortControllerRef = useRef<AbortController | null>(null);
 
-  const fetchStats = async () => {
+  const fetchStats = useCallback(async () => {
     // Check cache first
     const cached = statsCache.get(username);
     if (cached && Date.now() - cached.timestamp < CACHE_DURATION) {
@@ -61,7 +61,7 @@ export const useGithubStats = (username: string): UseGithubStatsReturn => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [username]);
 
   useEffect(() => {
     fetchStats();
@@ -72,7 +72,7 @@ export const useGithubStats = (username: string): UseGithubStatsReturn => {
         abortControllerRef.current.abort();
       }
     };
-  }, [username]);
+  }, [username, fetchStats]);
 
   return {
     stats,

@@ -56,7 +56,7 @@ export function Skills() {
       }
     }
   };
-  return <section id="skills" className="py-20 bg-black/60 backdrop-blur-sm relative overflow-hidden">
+  return <section id="skills" className="py-20 bg-white/80 dark:bg-black/50 backdrop-blur-sm relative overflow-hidden">
       {/* Animated background */}
       <motion.div className="absolute inset-0 opacity-10" style={{
       backgroundImage: 'radial-gradient(circle, rgba(255, 214, 10, 0.1) 1px, transparent 1px)',
@@ -80,10 +80,10 @@ export function Skills() {
       }} transition={{
         duration: 0.8
       }} className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading text-gold mb-4">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading text-blue-700 dark:text-gold mb-4">
             THE DRIVETRAIN
           </h2>
-          <p className="text-xl text-textSecondary font-heading">THE TOOLKIT</p>
+          <p className="text-xl text-gray-600 dark:text-textSecondary font-heading">THE TOOLKIT</p>
           <motion.div className="w-24 h-1 bg-blueprint mx-auto mt-4" initial={{
           width: 0
         }} whileInView={{
@@ -100,7 +100,7 @@ export function Skills() {
           y: -10,
           scale: 1.02,
           boxShadow: '0 20px 40px rgba(255, 214, 10, 0.3)'
-        }} className="group p-6 bg-gunmetal border-2 border-blueprint/30 hover:border-gold transition-all duration-300 relative overflow-hidden">
+        }} className="group p-6 bg-white dark:bg-gunmetal border-2 border-blue-300 dark:border-blueprint/30 hover:border-blue-600 dark:hover:border-gold transition-all duration-300 relative overflow-hidden">
               {/* Animated background gradient */}
               <motion.div className="absolute inset-0 bg-gradient-to-br from-gold/0 to-gold/0 group-hover:from-gold/10 group-hover:to-transparent" initial={false} transition={{
             duration: 0.3
@@ -147,10 +147,10 @@ export function Skills() {
                     </motion.svg>
                   </motion.div>
                 </div>
-                <h3 className="text-2xl font-heading text-textPrimary mb-1 group-hover:text-gold transition-colors">
+                <h3 className="text-2xl font-heading text-gray-900 dark:text-textPrimary mb-1 group-hover:text-blue-600 dark:group-hover:text-gold transition-colors">
                   {category.title}
                 </h3>
-                <p className="text-sm text-textSecondary font-mono mb-4">
+                <p className="text-sm text-gray-600 dark:text-textSecondary font-mono mb-4">
                   {category.subtitle}
                 </p>
                 <ul className="space-y-2">
@@ -163,7 +163,7 @@ export function Skills() {
               } : {}} transition={{
                 duration: 0.3,
                 delay: index * 0.1 + skillIndex * 0.05
-              }} className="text-textSecondary text-sm flex items-center group/item">
+              }} className="text-gray-700 dark:text-textSecondary text-sm flex items-center group/item">
                       <motion.span className="w-1.5 h-1.5 bg-blueprint mr-2 rounded-full" whileHover={{
                   scale: 2,
                   backgroundColor: '#FFD60A'

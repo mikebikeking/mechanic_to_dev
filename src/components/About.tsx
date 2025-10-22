@@ -1,8 +1,7 @@
 import { WrenchIcon, CodeIcon, UsersIcon, GaugeIcon } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-// @ts-ignore: allow importing image asset without type declaration
-import MikeImage from '../assets/Mike_192.jpg'
+import MikeImage from '../assets/Mike_192.jpg';
 export function About() {
   const [ref, inView] = useInView({
     triggerOnce: false,
@@ -49,7 +48,7 @@ export function About() {
       }
     }
   };
-  return <section id="about" className="py-20 bg-gunmetal/70 backdrop-blur-sm relative overflow-hidden">
+  return <section id="about" className="py-20 bg-gray-50/80 dark:bg-gunmetal/50 backdrop-blur-sm relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl opacity-30" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -64,7 +63,7 @@ export function About() {
       }} transition={{
         duration: 0.8
       }} className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading text-gold mb-4">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading text-blue-700 dark:text-gold mb-4">
             THE MECHANIC'S CODE
           </h2>
           <motion.div className="w-24 h-1 bg-blueprint mx-auto" initial={{
@@ -93,7 +92,7 @@ export function About() {
           }} transition={{
             duration: 0.3
           }}>
-              <div className="absolute inset-0 bg-gradient-to-br from-blueprint/20 to-gold/20 rounded-lg border-2 border-blueprint/30" />
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-200/40 to-purple-200/40 dark:from-blueprint/20 dark:to-gold/20 rounded-lg border-2 border-blue-300 dark:border-blueprint/30" />
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center">
                   </div>
@@ -142,12 +141,10 @@ export function About() {
             <motion.div variants={containerVariants} initial="hidden" animate={inView ? 'visible' : 'hidden'} className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
               {parallels.map((item, index) => <motion.div key={index} variants={itemVariants} whileHover={{
               scale: 1.05,
-              borderColor: 'rgba(255, 214, 10, 0.5)',
-              boxShadow: '0 10px 30px rgba(255, 214, 10, 0.2)'
-            }} className="p-4 bg-gunmetal border border-blueprint/30 transition-all group cursor-default">
-                  <item.icon className="text-blueprint group-hover:text-gold transition-colors mb-2" size={24} />
-                  <div className="font-mono text-xs text-textSecondary">
-                    {item.from} → <span className="text-gold">{item.to}</span>
+            }} className="p-4 bg-white dark:bg-gunmetal border-2 border-blue-300 dark:border-blueprint/30 hover:border-blue-600 dark:hover:border-gold hover:shadow-lg hover:shadow-blue-600/20 dark:hover:shadow-gold/20 transition-all group cursor-default">
+                  <item.icon className="text-blue-600 dark:text-blueprint group-hover:text-blue-700 dark:group-hover:text-gold transition-colors mb-2" size={24} />
+                  <div className="font-mono text-xs text-gray-700 dark:text-textSecondary">
+                    {item.from} → <span className="text-blue-700 dark:text-gold font-semibold">{item.to}</span>
                   </div>
                 </motion.div>)}
             </motion.div>

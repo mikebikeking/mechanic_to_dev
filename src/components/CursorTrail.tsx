@@ -79,7 +79,7 @@ export function CursorTrail() {
           initial={{ opacity: 1, scale: 1 }}
           animate={{ opacity: 0, scale: 0 }}
           transition={{ duration: 0.6 }}
-          className="absolute w-2 h-2 bg-gold rounded-full"
+          className="absolute w-2 h-2 bg-blue-500 dark:bg-gold rounded-full"
           style={{
             left: trail.x - 4,
             top: trail.y - 4,
@@ -90,7 +90,7 @@ export function CursorTrail() {
 
       {/* Main cursor ring */}
       <motion.div
-        className="absolute w-10 h-10 border-2 border-gold rounded-full mix-blend-difference"
+        className="absolute w-10 h-10 border-2 border-blue-500 dark:border-gold rounded-full mix-blend-difference"
         style={{
           left: cursorXSpring,
           top: cursorYSpring,
@@ -101,7 +101,7 @@ export function CursorTrail() {
 
       {/* Inner cursor dot */}
       <motion.div
-        className="absolute w-2 h-2 bg-gold rounded-full"
+        className="absolute w-2 h-2 bg-blue-500 dark:bg-gold rounded-full"
         style={{
           left: cursorX,
           top: cursorY,

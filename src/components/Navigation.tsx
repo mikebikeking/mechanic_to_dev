@@ -1,11 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo } from 'react';
 import { MenuIcon, XIcon } from 'lucide-react';
+import { useApp } from '../context/useApp';
+import { appActions } from '../context/appActions';
+import { ThemeToggle } from './ThemeToggle';
 
 export function Navigation() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
+  const { state, dispatch } = useApp();
+  const { isMenuOpen, activeSection } = state;
 
-  const navItems = [
+  const navItems = useMemo(() => [
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About' },
     { id: 'skills', label: 'Skills' },
@@ -13,7 +16,7 @@ export function Navigation() {
     { id: 'workshop', label: 'Workshop' },
     { id: 'experience', label: 'Experience' },
     { id: 'contact', label: 'Contact' }
-  ];
+  ], []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,7 +26,7 @@ export function Navigation() {
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = sections[i];
         if (section && section.offsetTop <= scrollPosition) {
-          setActiveSection(navItems[i].id);
+          dispatch(appActions.setActiveSection(navItems[i].id));
           break;
         }
       }
@@ -31,25 +34,25 @@ export function Navigation() {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [navItems, dispatch]);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
-      setIsOpen(false);
+      dispatch(appActions.setMenuOpen(false));
     }
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-gunmetal/95 backdrop-blur-sm border-b border-blueprint/20">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-gunmetal/95 backdrop-blur-sm border-b border-blue-200 dark:border-blueprint/20 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo - Clickable to Home */}
           <div className="flex-shrink-0">
             <button
               onClick={() => scrollToSection('home')}
-              className="text-2xl font-heading text-gold hover:text-torch transition-colors cursor-pointer"
+              className="text-2xl font-heading text-blue-700 dark:text-gold hover:text-blue-600 dark:hover:text-torch transition-colors cursor-pointer"
               aria-label="Go to home"
             >
               MK
@@ -57,39 +60,43 @@ export function Navigation() {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
+          <div className="hidden md:flex md:items-center md:space-x-4">
+            <div className="flex items-baseline space-x-8">
               {navItems.map(item => (
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
                   className={`px-3 py-2 text-sm font-medium transition-colors ${
                     activeSection === item.id
-                      ? 'text-gold border-b-2 border-gold'
-                      : 'text-textPrimary hover:text-gold'
+                      ? 'text-blue-700 dark:text-gold border-b-2 border-blue-700 dark:border-gold'
+                      : 'text-gray-700 dark:text-textPrimary hover:text-blue-600 dark:hover:text-gold'
                   }`}
                 >
                   {item.label}
                 </button>
               ))}
             </div>
+            
+            {/* Theme Toggle - Desktop */}
+            <ThemeToggle />
           </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden">
+          {/* Mobile menu button and theme toggle */}
+          <div className="md:hidden flex items-center space-x-3">
+            <ThemeToggle />
             <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-textPrimary hover:text-gold p-2"
+              onClick={() => dispatch(appActions.setMenuOpen(!isMenuOpen))}
+              className="text-gray-700 dark:text-textPrimary hover:text-blue-600 dark:hover:text-gold p-2"
             >
-              {isOpen ? <XIcon size={24} /> : <MenuIcon size={24} />}
+              {isMenuOpen ? <XIcon size={24} /> : <MenuIcon size={24} />}
             </button>
           </div>
         </div>
       </div>
 
       {/* Mobile Navigation */}
-      {isOpen && (
-        <div className="md:hidden bg-gunmetal border-t border-blueprint/20">
+      {isMenuOpen && (
+        <div className="md:hidden bg-white dark:bg-gunmetal border-t border-blue-200 dark:border-blueprint/20">
           <div className="px-2 pt-2 pb-3 space-y-1">
             {navItems.map(item => (
               <button
@@ -97,8 +104,8 @@ export function Navigation() {
                 onClick={() => scrollToSection(item.id)}
                 className={`block w-full text-left px-3 py-2 text-base font-medium ${
                   activeSection === item.id
-                    ? 'text-gold bg-blueprint/10'
-                    : 'text-textPrimary hover:text-gold hover:bg-blueprint/5'
+                    ? 'text-blue-700 dark:text-gold bg-blue-50 dark:bg-blueprint/10'
+                    : 'text-gray-700 dark:text-textPrimary hover:text-blue-600 dark:hover:text-gold hover:bg-blue-50 dark:hover:bg-blueprint/5'
                 }`}
               >
                 {item.label}

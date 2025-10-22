@@ -81,12 +81,12 @@ class GithubService {
       const repos = data.data.user.repositories.nodes;
 
       const totalStars = repos.reduce(
-        (acc: number, repo: any) => acc + repo.stargazerCount,
+        (acc: number, repo: { stargazerCount: number }) => acc + repo.stargazerCount,
         0
       );
 
       const totalCommits = repos.reduce(
-        (acc: number, repo: any) => {
+        (acc: number, repo: { defaultBranchRef?: { target?: { history?: { totalCount: number } } } }) => {
           return acc + (repo.defaultBranchRef?.target?.history?.totalCount || 0);
         },
         0

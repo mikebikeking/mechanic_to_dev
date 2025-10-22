@@ -8,13 +8,14 @@ import {
   Terminal,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import { useGithubStats } from "../hooks/useGithubStats";
 
 // StatCard component
 const StatCard = ({ number, label }: { number: string | number; label: string }) => (
-  <div className="bg-gunmetal/50 border border-blueprint/20 p-6 text-center hover:border-gold/50 transition-colors">
-    <div className="text-3xl font-heading text-gold mb-2">{String(number)}</div>
-    <div className="text-sm text-textSecondary">{label}</div>
+  <div className="bg-blue-50 dark:bg-gunmetal/50 border border-blue-200 dark:border-blueprint/20 p-6 text-center hover:border-blue-500 dark:hover:border-gold/50 transition-colors">
+    <div className="text-3xl font-heading text-blue-600 dark:text-gold mb-2">{String(number)}</div>
+    <div className="text-sm text-gray-600 dark:text-textSecondary">{label}</div>
   </div>
 );
 
@@ -22,7 +23,7 @@ export function Workshop() {
   type Tool = { name: string; purpose: string };
   type Item = { category: string; tools: Tool[] };
   type Section = {
-    icon: any;
+    icon: React.ComponentType<{ size?: number | string; className?: string }>;
     title: string;
     subtitle: string;
     items: Item[];
@@ -33,6 +34,10 @@ export function Workshop() {
   type TabKey = (typeof tabKeys)[number];
 
   const [activeTab, setActiveTab] = useState<TabKey>("vscode");
+  const [ref, inView] = useInView({
+    triggerOnce: false,
+    threshold: 0.1
+  });
 
   const { stats, error } = useGithubStats("mikebikeking");
 
@@ -246,20 +251,40 @@ describe('Button', () => {
   const Icon = currentSection.icon;
 
   return (
-    <section id="workshop" className="py-20 bg-gunmetal">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="workshop" className="py-20 bg-white/80 dark:bg-gunmetal/50 backdrop-blur-sm relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-torch/5 rounded-full blur-3xl opacity-30" />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading text-gold mb-4">
+        <motion.div 
+          initial={{ opacity: 0, y: -30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading text-blue-700 dark:text-gold mb-4">
             THE WORKSHOP
           </h2>
           <p className="text-xl text-textSecondary font-heading italic">
             "Every good mechanic has a clean workspace"
           </p>
-          <div className="w-24 h-1 bg-blueprint mx-auto mt-4"></div>
-        </div>
+          <motion.div 
+            className="w-24 h-1 bg-blue-500 dark:bg-blueprint mx-auto mt-4"
+            initial={{ width: 0 }}
+            whileInView={{ width: 96 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          />
+        </motion.div>
         {/* Tab Navigation */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        <motion.div 
+          ref={ref}
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+          className="flex flex-wrap justify-center gap-4 mb-12"
+        >
           {Object.entries(workshopSections).map(([key, section]) => {
             const k = key as TabKey;
             const TabIcon = section.icon;
@@ -269,8 +294,8 @@ describe('Button', () => {
                 onClick={() => setActiveTab(k)}
                 className={`flex items-center gap-2 px-6 py-3 font-heading text-sm transition-all ${
                   activeTab === key
-                    ? "bg-gold text-gunmetal"
-                    : "bg-gunmetal/50 text-textPrimary border-2 border-blueprint/30 hover:border-gold"
+                    ? "bg-blue-600 dark:bg-gold text-white dark:text-gunmetal"
+                    : "bg-blue-50 dark:bg-gunmetal/50 text-blue-700 dark:text-textPrimary border-2 border-blue-300 dark:border-blueprint/30 hover:border-blue-600 dark:hover:border-gold"
                 }`}
               >
                 <TabIcon size={20} />
@@ -278,7 +303,7 @@ describe('Button', () => {
               </button>
             );
           })}
-        </div>
+        </motion.div>
         {/* Content Area with Animation */}
         <AnimatePresence mode="wait">
           <motion.div
@@ -290,14 +315,14 @@ describe('Button', () => {
             className="grid lg:grid-cols-2 gap-8"
           >
             {/* Left: Tools & Practices */}
-            <div className="bg-gunmetal/50 border-2 border-blueprint/30 p-8">
+            <div className="bg-blue-50 dark:bg-gunmetal/50 border-2 border-blue-200 dark:border-blueprint/30 p-8">
               <div className="flex items-center gap-3 mb-6">
-                <Icon className="text-gold" size={32} />
+                <Icon className="text-blue-600 dark:text-gold" size={32} />
                 <div>
-                  <h3 className="text-2xl font-heading text-textPrimary">
+                  <h3 className="text-2xl font-heading text-gray-900 dark:text-textPrimary">
                     {currentSection.title}
                   </h3>
-                  <p className="text-sm text-textSecondary">
+                  <p className="text-sm text-gray-600 dark:text-textSecondary">
                     {currentSection.subtitle}
                   </p>
                 </div>
@@ -306,7 +331,7 @@ describe('Button', () => {
               <div className="space-y-6">
                 {currentSection.items.map((item, idx) => (
                   <div key={idx}>
-                    <h4 className="text-blueprint font-heading text-sm mb-3 flex items-center gap-2">
+                    <h4 className="text-blue-600 dark:text-blueprint font-heading text-sm mb-3 flex items-center gap-2">
                       <ChevronRight size={16} />
                       {item.category}
                     </h4>
@@ -316,10 +341,10 @@ describe('Button', () => {
                           key={toolIdx}
                           className="flex items-start gap-3 text-sm"
                         >
-                          <span className="text-gold font-mono min-w-[120px]">
+                          <span className="text-blue-700 dark:text-gold font-mono min-w-[120px]">
                             {tool.name}
                           </span>
-                          <span className="text-textSecondary">
+                          <span className="text-gray-600 dark:text-textSecondary">
                             {tool.purpose}
                           </span>
                         </div>
@@ -331,17 +356,17 @@ describe('Button', () => {
             </div>
 
             {/* Right: Code Example */}
-            <div className="bg-[#1e1e1e] border-2 border-blueprint/30 p-6 rounded-lg">
-              <div className="flex items-center gap-2 mb-4 pb-3 border-b border-blueprint/20">
-                <Terminal className="text-gold" size={20} />
-                <span className="text-textSecondary font-mono text-sm">
+            <div className="bg-gray-100 dark:bg-[#1e1e1e] border-2 border-blue-200 dark:border-blueprint/30 p-6 rounded-lg">
+              <div className="flex items-center gap-2 mb-4 pb-3 border-b border-blue-200 dark:border-blueprint/20">
+                <Terminal className="text-blue-600 dark:text-gold" size={20} />
+                <span className="text-gray-600 dark:text-textSecondary font-mono text-sm">
                   {activeTab === "vscode" && "settings.json"}
                   {activeTab === "git" && "terminal"}
                   {activeTab === "testing" && "Button.test.tsx"}
                   {activeTab === "organization" && "project-structure"}
                 </span>
               </div>
-              <pre className="text-sm text-gray-300 font-mono overflow-x-auto">
+              <pre className="text-sm text-gray-800 dark:text-gray-300 font-mono overflow-x-auto">
                 <code>{currentSection.codeExample}</code>
               </pre>
             </div>

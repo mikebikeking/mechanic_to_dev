@@ -1,0 +1,85 @@
+/* Theme Toggle Button */
+.theme-toggle-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 1.75rem;
+  border-radius: 9999px;
+  border-width: 2px;
+  transition: all 0.3s;
+}
+
+.theme-toggle-button.light {
+  background-color: rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.theme-toggle-button.dark {
+  background-color: rgba(255, 214, 10, 0.2);
+  border-color: rgba(255, 214, 10, 0.3);
+}
+
+/* Track Background */
+.theme-toggle-track {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  transition: opacity 0.3s;
+}
+
+.theme-toggle-track.light {
+  background: linear-gradient(to right, rgba(59, 130, 246, 0.1), rgba(147, 51, 234, 0.1));
+  opacity: 0.5;
+}
+
+.theme-toggle-track.dark {
+  background: linear-gradient(to right, rgba(10, 132, 255, 0.1), rgba(255, 214, 10, 0.1));
+  opacity: 1;
+}
+
+/* Slider Circle - Force override scrollbar gradient bug */
+.theme-toggle-slider,
+#theme-toggle-slider-circle {
+  position: absolute !important;
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  border-radius: 9999px !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  /* Prevent scrollbar gradient from bleeding in */
+  isolation: isolate !important;
+  will-change: background, transform !important;
+  contain: layout style !important;
+}
+
+/* Explicitly NOT the scrollbar gradient colors */
+.theme-toggle-slider.light,
+#theme-toggle-slider-circle[data-theme="light"] {
+  background: rgb(59, 130, 246) !important;
+  background-image: linear-gradient(135deg, #3B82F6 0%, #9333EA 100%) !important;
+  background-color: #3B82F6 !important;
+}
+
+.theme-toggle-slider.dark,
+#theme-toggle-slider-circle[data-theme="dark"] {
+  background: rgb(255, 214, 10) !important;
+  background-image: linear-gradient(135deg, #FFD60A 0%, #FF6B35 50%, #0A84FF 100%) !important;
+  background-color: #FFD60A !important;
+}
+
+/* Static Icons */
+.theme-toggle-icons {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 0.375rem;
+  padding-right: 0.375rem;
+  pointer-events: none;
+}
+

@@ -7,7 +7,20 @@
 }
 body {
   font-family: 'Inter', sans-serif;
-  background-color: #1C1C1E;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light mode (when dark class is NOT present) */
+:root:not(.dark) body,
+body:not(.dark) {
+  background-color: #FFFFFF;
+  color: #1C1C1E;
+}
+
+/* Dark mode */
+:root.dark body,
+body.dark {
+  background-color: #000000;
   color: #F5F5F7;
 }
 .grid-pattern {
@@ -39,14 +52,38 @@ body {
   background: #0A0A0A;
 }
 
-::-webkit-scrollbar-thumb {
+.dark ::-webkit-scrollbar-track {
+  background: #0A0A0A;
+}
+
+.light ::-webkit-scrollbar-track,
+:root:not(.dark) ::-webkit-scrollbar-track {
+  background: #F5F5F7; 
+}
+
+/* Light mode scrollbar */
+:root:not(.dark) ::-webkit-scrollbar-thumb,
+.light ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #3B82F6, #9333EA);
+  border-radius: 6px;
+}
+
+:root:not(.dark) ::-webkit-scrollbar-thumb:hover,
+.light ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #9333EA, #3B82F6);
+}
+
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, #FFD700, #FF6B35);
   border-radius: 6px;
 }
 
-::-webkit-scrollbar-thumb:hover {
+.dark ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(180deg, #FF6B35, #FFD700);
 }
+
+
 
 /* Hide default cursor on desktop */
 @media (min-width: 768px) {

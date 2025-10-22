@@ -46,10 +46,10 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-transparent"
     >
       {/* Animated gradient background - made more transparent */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gunmetal/60 via-black/40 to-gunmetal/60">
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-white/30 to-blue-50/50 dark:from-black/70 dark:via-gunmetal/50 dark:to-black/70">
         <motion.div
           className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,214,10,0.15),transparent_50%)]"
           animate={{
@@ -98,16 +98,18 @@ export function Hero() {
             cy="50"
             r="45"
             fill="none"
-            stroke="rgba(255, 214, 10, 0.3)"
+            stroke="currentColor"
             strokeWidth="2"
+            className="text-blue-500/30 dark:text-gold/30"
           />
           <circle
             cx="50"
             cy="50"
             r="42"
             fill="none"
-            stroke="rgba(255, 214, 10, 0.2)"
+            stroke="currentColor"
             strokeWidth="1"
+            className="text-blue-500/20 dark:text-gold/20"
           />
           {/* Spokes */}
           {Array.from({
@@ -126,8 +128,9 @@ export function Hero() {
                 y1={y1}
                 x2={x2}
                 y2={y2}
-                stroke="rgba(255, 214, 10, 0.25)"
+                stroke="currentColor"
                 strokeWidth="0.5"
+                className="text-blue-500/25 dark:text-gold/25"
               />
             );
           })}
@@ -136,11 +139,17 @@ export function Hero() {
             cx="50"
             cy="50"
             r="8"
-            fill="rgba(255, 214, 10, 0.2)"
-            stroke="rgba(255, 214, 10, 0.4)"
+            fill="currentColor"
             strokeWidth="2"
+            className="text-blue-500/20 dark:text-gold/20 [stroke:rgb(59_130_246_/_0.4)] dark:[stroke:rgb(255_214_10_/_0.4)]"
           />
-          <circle cx="50" cy="50" r="4" fill="rgba(255, 214, 10, 0.3)" />
+          <circle 
+            cx="50" 
+            cy="50" 
+            r="4" 
+            fill="currentColor"
+            className="text-blue-500/30 dark:text-gold/30"
+          />
         </motion.svg>
       </motion.div>
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -189,7 +198,7 @@ export function Hero() {
             }}
           >
             <motion.h1
-              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-heading text-textPrimary leading-tight"
+              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-heading text-gray-900 dark:text-textPrimary leading-tight"
               initial={{
                 opacity: 0,
                 y: 50,
@@ -206,7 +215,7 @@ export function Hero() {
               PRECISION
               <br />
               <motion.span
-                className="text-transparent bg-clip-text bg-gradient-to-r from-gold via-torch to-blueprint"
+                className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 dark:from-gold dark:via-torch dark:to-blueprint"
                 animate={{
                   backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
                 }}
@@ -239,14 +248,14 @@ export function Hero() {
               duration: 0.8,
               delay: 0.5,
             }}
-            className="flex items-center justify-center gap-4 text-textSecondary"
+            className="flex items-center justify-center gap-4 text-gray-600 dark:text-textSecondary"
           >
-            <WrenchIcon className="text-gold" size={24} />
-            <p className="text-xl sm:text-2xl font-body max-w-2xl">
+            <WrenchIcon className="text-blue-600 dark:text-gold" size={24} />
+            <p className="text-xl sm:text-2xl font-body max-w-2xl text-gray-600 dark:text-textSecondary">
               20 years of mechanical mastery, now building pixel-perfect web
               experiences
             </p>
-            <CodeIcon className="text-blueprint" size={24} />
+            <CodeIcon className="text-blue-600 dark:text-blueprint" size={24} />
           </motion.div>
           {/* Name and title */}
           <motion.div
@@ -264,10 +273,10 @@ export function Hero() {
             }}
             className="space-y-2"
           >
-            <div className="text-3xl sm:text-4xl font-heading text-gold">
+            <div className="text-3xl sm:text-4xl font-heading text-blue-700 dark:text-gold">
               MICHAEL KING
             </div>
-            <div className="text-lg text-blueprint font-mono">
+            <div className="text-lg text-blue-600 dark:text-blueprint font-mono">
               Frontend Developer | React Specialist
             </div>
           </motion.div>
@@ -296,7 +305,7 @@ export function Hero() {
               whileTap={{
                 scale: 0.95,
               }}
-              className="group px-8 py-4 bg-gradient-to-r from-gold to-torch text-gunmetal font-heading text-lg transition-all duration-300 flex items-center gap-2"
+              className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-gold dark:to-torch text-white dark:text-gunmetal font-heading text-lg transition-all duration-300 flex items-center gap-2"
             >
               VIEW PORTFOLIO
               <ChevronDownIcon size={20} />
@@ -311,7 +320,7 @@ export function Hero() {
               whileTap={{
                 scale: 0.95,
               }}
-              className="px-8 py-4 border-2 border-blueprint text-blueprint font-heading text-lg transition-all duration-300"
+              className="px-8 py-4 border-2 border-blue-600 dark:border-blueprint text-blue-600 dark:text-blueprint font-heading text-lg transition-all duration-300"
             >
               GET IN TOUCH
             </motion.a>
@@ -357,7 +366,7 @@ export function Hero() {
                   borderColor: "rgba(255, 214, 10, 0.5)",
                   color: "#FFD60A",
                 }}
-                className="px-3 py-1 bg-gunmetal/50 border border-blueprint/30 text-textSecondary text-xs font-mono backdrop-blur-sm transition-colors cursor-default"
+                className="px-3 py-1 bg-blue-50 dark:bg-gunmetal/50 border border-blue-200 dark:border-blueprint/30 text-gray-700 dark:text-textSecondary text-xs font-mono backdrop-blur-sm transition-colors cursor-default"
               >
                 {tech}
               </motion.span>
