@@ -12,9 +12,17 @@ import { useInView } from "react-intersection-observer";
 import { useGithubStats } from "../hooks/useGithubStats";
 import { StatCardSkeleton } from "./SkeletonLoader";
 
-const StatCard = ({ number, label }: { number: string | number; label: string }) => (
+const StatCard = ({
+  number,
+  label,
+}: {
+  number: string | number;
+  label: string;
+}) => (
   <div className="bg-blue-50 dark:bg-gunmetal/50 border border-blue-200 dark:border-blueprint/20 p-6 text-center hover:border-blue-500 dark:hover:border-gold/50 transition-colors">
-    <div className="text-3xl font-heading text-blue-600 dark:text-gold mb-2">{String(number)}</div>
+    <div className="text-3xl font-heading text-blue-600 dark:text-gold mb-2">
+      {String(number)}
+    </div>
     <div className="text-sm text-gray-600 dark:text-textSecondary">{label}</div>
   </div>
 );
@@ -36,11 +44,10 @@ export function Workshop() {
   const [activeTab, setActiveTab] = useState<TabKey>("vscode");
   const [ref, inView] = useInView({
     triggerOnce: false,
-    threshold: 0.1
+    threshold: 0.1,
   });
 
   const { stats, error, loading } = useGithubStats("mikebikeking");
-
 
   const workshopSections: Record<TabKey, Section> = {
     vscode: {
@@ -251,12 +258,15 @@ describe('Button', () => {
   const Icon = currentSection.icon;
 
   return (
-    <section id="workshop" className="py-20 bg-white/80 dark:bg-gunmetal/50 backdrop-blur-sm relative overflow-hidden">
+    <section
+      id="workshop"
+      className="py-20 bg-white/80 dark:bg-gunmetal/50 backdrop-blur-sm relative overflow-hidden"
+    >
       {/* Animated background elements */}
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-torch/5 rounded-full blur-3xl opacity-30" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -269,7 +279,7 @@ describe('Button', () => {
           <p className="text-xl text-textSecondary font-heading italic">
             "Every good mechanic has a clean workspace"
           </p>
-          <motion.div 
+          <motion.div
             className="w-24 h-1 bg-blue-500 dark:bg-blueprint mx-auto mt-4"
             initial={{ width: 0 }}
             whileInView={{ width: 96 }}
@@ -278,7 +288,7 @@ describe('Button', () => {
           />
         </motion.div>
         {/* Tab Navigation */}
-        <motion.div 
+        <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -387,7 +397,10 @@ describe('Button', () => {
                 number={stats?.contributionsThisYear || 0}
                 label="2025 Contributions"
               />
-              <StatCard number={stats?.totalRepos || 0} label="Projects Built" />
+              <StatCard
+                number={stats?.totalRepos || 0}
+                label="Projects Built"
+              />
               <StatCard number="Mechanic → Dev" label="Unique Journey" />
               <StatCard number="Quality Obsessed" label="Core Value" />
             </>
