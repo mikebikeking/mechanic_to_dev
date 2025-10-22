@@ -7,19 +7,25 @@ import { ErrorBoundary } from './components/ErrorBoundary';
 import { AppProvider } from './context/AppContext';
 import { LazySection } from './components/LazySection';
 import { LazyAbout, LazySkills, LazyProjects, LazyWorkshop, LazyExperience, LazyEducation, LazyContact } from './components/LazyComponents';
-
+import { PageTransition } from './components/PageTransition';
+import { useSmoothScroll } from './hooks/useSmoothScroll';
+import { ScrollProgress } from './components/ScrollProgress';
 
 export function App() {
+  useSmoothScroll();
+  
   return (
     <AppProvider>
       <ErrorBoundary>
         <LoadingAnimation />
-        <div className="w-full min-h-screen bg-transparent dark:bg-transparent">
-          <BikePathBackground />
-          <CursorTrail />
-        <div className="relative z-10">
-          <Navigation />
-          <Hero />
+        <ScrollProgress />
+        <PageTransition>
+          <div className="w-full min-h-screen bg-transparent dark:bg-transparent">
+            <BikePathBackground />
+            <CursorTrail />
+          <div className="relative z-10">
+            <Navigation />
+            <Hero />
           <LazySection>
             <LazyAbout />
           </LazySection>
@@ -42,7 +48,8 @@ export function App() {
             <LazyContact />
           </LazySection>
         </div>
-        </div>
+          </div>
+        </PageTransition>
       </ErrorBoundary>
     </AppProvider>
   );

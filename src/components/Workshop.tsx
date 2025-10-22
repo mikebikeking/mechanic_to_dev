@@ -11,7 +11,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useGithubStats } from "../hooks/useGithubStats";
 
-// StatCard component
 const StatCard = ({ number, label }: { number: string | number; label: string }) => (
   <div className="bg-blue-50 dark:bg-gunmetal/50 border border-blue-200 dark:border-blueprint/20 p-6 text-center hover:border-blue-500 dark:hover:border-gold/50 transition-colors">
     <div className="text-3xl font-heading text-blue-600 dark:text-gold mb-2">{String(number)}</div>

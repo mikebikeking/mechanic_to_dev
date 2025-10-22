@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { GithubIcon, LinkedinIcon, MailIcon, FileText, PhoneIcon, MapPinIcon, SendIcon } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import resume from '../assets/Michael_King_Resume.pdf';
+import { MagneticButton } from './MagneticButton';
 
 
 const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_nnjw6mh';
@@ -24,7 +25,6 @@ export function Contact() {
       ...formData,
       [e.target.name]: e.target.value
     });
-    // Clear status when user starts typing again
     if (status !== 'idle') {
       setStatus('idle');
       setStatusMessage('');
@@ -48,10 +48,10 @@ export function Contact() {
       templateParams,
       PUBLIC_KEY
     )
-      .then((response) => {
+      .then(() => {
         setStatus('success');
         setStatusMessage('Message sent successfully! Thanks for reaching out.');
-        setFormData({ name: '', email: '', message: '' }); // Clear form
+        setFormData({ name: '', email: '', message: '' });
         setIsSending(false);
       }, (error) => {
         console.error('EmailJS FAILED...', error);
@@ -61,7 +61,6 @@ export function Contact() {
       });
   };
 
-  // --- Static Data ---
   const socialLinks = [{
     icon: GithubIcon,
     label: 'GitHub',
@@ -89,7 +88,6 @@ export function Contact() {
     label: 'Boston, Massachusetts'
   }];
 
-  // --- JSX Render ---
   return (
     <section id="contact" className="py-20 bg-gray-50/80 dark:bg-black/50 backdrop-blur-sm">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -131,20 +129,21 @@ export function Contact() {
                 <textarea id="message" name="message" value={formData.message} onChange={handleChange} required rows={6} className="w-full px-4 py-3 bg-white dark:bg-gunmetal border-2 border-blue-300 dark:border-blueprint/30 text-gray-900 dark:text-textPrimary focus:border-blue-600 dark:focus:border-gold focus:outline-none transition-colors resize-none" placeholder="Tell me about your project..." disabled={isSending} />
               </div>
               {/* Submission Button */}
-              <button 
-                type="submit" 
+              <MagneticButton
+                type="submit"
+                intensity={0.35}
+                disabled={isSending}
                 className={`
                   w-full px-6 py-4 font-heading text-lg transition-all duration-300 transform flex items-center justify-center gap-2
                   ${isSending 
                     ? 'bg-blue-400 dark:bg-blueprint text-white dark:text-gunmetal cursor-not-allowed opacity-70' 
-                    : 'bg-blue-600 dark:bg-gold text-white dark:text-gunmetal hover:bg-blue-700 dark:hover:bg-torch hover:scale-105 hover:shadow-lg hover:shadow-blue-600/50 dark:hover:shadow-gold/50'
+                    : 'bg-blue-600 dark:bg-gold text-white dark:text-gunmetal hover:bg-blue-700 dark:hover:bg-torch shadow-lg hover:shadow-xl hover:shadow-blue-600/50 dark:hover:shadow-gold/50'
                   }
                 `}
-                disabled={isSending}
               >
                 <SendIcon size={20} />
                 {isSending ? 'SENDING...' : 'SEND MESSAGE'}
-              </button>
+              </MagneticButton>
 
               {/* Status Message */}
               {statusMessage && (
@@ -178,7 +177,6 @@ export function Contact() {
               </h3>
               <div className="flex gap-4">
                 {socialLinks.map((social, index) => {
-                  // Map colors to proper Tailwind classes for both light and dark modes
                   const colorClasses = {
                     gold: 'border-yellow-300 dark:border-blueprint/30 hover:border-yellow-600 dark:hover:border-gold hover:shadow-yellow-600/20 dark:hover:shadow-gold/20',
                     blueprint: 'border-blue-300 dark:border-blueprint/30 hover:border-blue-600 dark:hover:border-blueprint hover:shadow-blue-600/20 dark:hover:shadow-blueprint/20',

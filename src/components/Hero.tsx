@@ -1,6 +1,8 @@
 import { ChevronDownIcon, CodeIcon, WrenchIcon, ZapIcon } from "lucide-react";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
+import { MagneticButton } from "./MagneticButton";
+import { MagneticLink } from "./MagneticLink";
 
 export function Hero() {
   useEffect(() => {
@@ -48,7 +50,6 @@ export function Hero() {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-transparent"
     >
-      {/* Animated gradient background - made more transparent */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-white/30 to-blue-50/50 dark:from-black/70 dark:via-gunmetal/50 dark:to-black/70">
         <motion.div
           className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,214,10,0.15),transparent_50%)]"
@@ -76,9 +77,7 @@ export function Hero() {
           }}
         />
       </div>
-      {/* Animated grid */}
       <div className="absolute inset-0 grid-pattern opacity-30"></div>
-      {/* Floating bicycle wheel */}
       <motion.div className="absolute top-20 left-10 w-32 h-32">
         <motion.svg
           viewBox="0 0 100 100"
@@ -92,7 +91,6 @@ export function Hero() {
             ease: "easeInOut",
           }}
         >
-          {/* Outer rim */}
           <circle
             cx="50"
             cy="50"
@@ -111,7 +109,6 @@ export function Hero() {
             strokeWidth="1"
             className="text-blue-500/20 dark:text-gold/20"
           />
-          {/* Spokes */}
           {Array.from({
             length: 24,
           }).map((_, i) => {
@@ -134,7 +131,6 @@ export function Hero() {
               />
             );
           })}
-          {/* Hub */}
           <circle
             cx="50"
             cy="50"
@@ -154,7 +150,6 @@ export function Hero() {
       </motion.div>
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center space-y-8">
-          {/* Badge */}
           <motion.div
             initial={{
               opacity: 0,
@@ -184,7 +179,6 @@ export function Hero() {
               AVAILABLE FOR HIRE
             </span>
           </motion.div>
-          {/* Main heading with staggered animation */}
           <motion.div
             initial={{
               opacity: 0,
@@ -234,7 +228,6 @@ export function Hero() {
               MEETS CODE
             </motion.h1>
           </motion.div>
-          {/* Subtitle with icons */}
           <motion.div
             initial={{
               opacity: 0,
@@ -257,7 +250,6 @@ export function Hero() {
             </p>
             <CodeIcon className="text-blue-600 dark:text-blueprint" size={24} />
           </motion.div>
-          {/* Name and title */}
           <motion.div
             initial={{
               opacity: 0,
@@ -280,7 +272,6 @@ export function Hero() {
               Frontend Developer | React Specialist
             </div>
           </motion.div>
-          {/* CTA buttons */}
           <motion.div
             initial={{
               opacity: 0,
@@ -296,36 +287,22 @@ export function Hero() {
             }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
           >
-            <motion.button
+            <MagneticButton
               onClick={scrollToAbout}
-              whileHover={{
-                scale: 1.05,
-                boxShadow: "0 0 30px rgba(255, 214, 10, 0.5)",
-              }}
-              whileTap={{
-                scale: 0.95,
-              }}
-              className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-gold dark:to-torch text-white dark:text-gunmetal font-heading text-lg transition-all duration-300 flex items-center gap-2"
+              intensity={0.4}
+              className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-gold dark:to-torch text-white dark:text-gunmetal font-heading text-lg transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl"
             >
               VIEW PORTFOLIO
               <ChevronDownIcon size={20} />
-            </motion.button>
-            <motion.a
+            </MagneticButton>
+            <MagneticLink
               href="#contact"
-              whileHover={{
-                scale: 1.05,
-                backgroundColor: "rgba(10, 132, 255, 1)",
-                color: "#1C1C1E",
-              }}
-              whileTap={{
-                scale: 0.95,
-              }}
-              className="px-8 py-4 border-2 border-blue-600 dark:border-blueprint text-blue-600 dark:text-blueprint font-heading text-lg transition-all duration-300"
+              intensity={0.4}
+              className="px-8 py-4 border-2 border-blue-600 dark:border-blueprint text-blue-600 dark:text-blueprint font-heading text-lg transition-all duration-300 inline-flex items-center justify-center hover:bg-blue-600 dark:hover:bg-blueprint hover:text-white dark:hover:text-gunmetal"
             >
               GET IN TOUCH
-            </motion.a>
+            </MagneticLink>
           </motion.div>
-          {/* Tech stack preview */}
           <motion.div
             initial={{
               opacity: 0,
@@ -374,7 +351,6 @@ export function Hero() {
           </motion.div>
         </div>
       </div>
-      {/* Scroll indicator */}
     </section>
   );
 }

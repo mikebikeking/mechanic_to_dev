@@ -62,7 +62,6 @@ export function Education() {
           className="grid md:grid-cols-2 gap-6"
         >
           {credentials.map((cred, index) => {
-            // Map colors to proper Tailwind classes for both light and dark modes
             const colorClasses = {
               gold: 'bg-yellow-100 dark:bg-gold/20 border-yellow-300 dark:border-gold/30 text-yellow-700 dark:text-gold',
               blueprint: 'bg-blue-100 dark:bg-blueprint/20 border-blue-300 dark:border-blueprint/30 text-blue-700 dark:text-blueprint',

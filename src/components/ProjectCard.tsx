@@ -1,6 +1,7 @@
 import { ExternalLinkIcon, GithubIcon } from 'lucide-react';
 import { Project } from '../data/projects';
 import { OptimizedImage } from './OptimizedImage';
+import { MagneticLink } from './MagneticLink';
 
 interface ProjectCardProps {
   project: Project;
@@ -19,6 +20,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             src={project.image}
             alt={project.title}
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            width={600}
+            height={400}
             priority={false}
             placeholder="blur"
           />
@@ -34,16 +37,16 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             {project.title}
           </h3>
           
-          <div className="flex flex-wrap gap-2 mb-4">
-            {project.tech.map((tech, techIndex) => (
-              <span
-                key={techIndex}
-                className="px-2 py-1 bg-blue-100 dark:bg-blueprint/20 text-blue-700 dark:text-blueprint text-xs font-mono border border-blue-300 dark:border-blueprint/30"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
+        <div className="flex flex-wrap gap-2 mb-4">
+          {project.tech.map((tech, techIndex) => (
+            <span
+              key={techIndex}
+              className="px-2 py-1 bg-blue-100 dark:bg-blueprint/20 text-blue-700 dark:text-blueprint text-xs font-mono border border-blue-300 dark:border-blueprint/30"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
           
           <p className="text-gray-600 dark:text-textSecondary text-sm mb-4 leading-relaxed">
             {project.description}
@@ -69,24 +72,26 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         </div>
         
         <div className="flex gap-3 mt-auto">
-          <a
+          <MagneticLink
             href={project.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
+            intensity={0.3}
             className="flex-1 px-4 py-3 bg-blue-600 dark:bg-gold text-white dark:text-gunmetal text-center font-heading text-sm hover:bg-blue-700 dark:hover:bg-torch transition-colors flex items-center justify-center gap-2 whitespace-nowrap"
           >
             <ExternalLinkIcon size={16} className="flex-shrink-0" />
             VIEW LIVE
-          </a>
-          <a
+          </MagneticLink>
+          <MagneticLink
             href={project.codeUrl}
             target="_blank"
             rel="noopener noreferrer"
+            intensity={0.3}
             className="flex-1 px-4 py-3 border-2 border-blue-600 dark:border-blueprint text-blue-600 dark:text-blueprint text-center font-heading text-sm hover:bg-blue-600 dark:hover:bg-blueprint hover:text-white dark:hover:text-gunmetal transition-colors flex items-center justify-center gap-2 whitespace-nowrap"
           >
             <GithubIcon size={16} className="flex-shrink-0" />
             CODE
-          </a>
+          </MagneticLink>
         </div>
       </div>
     </div>
