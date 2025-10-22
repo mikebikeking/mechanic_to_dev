@@ -10,6 +10,7 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useGithubStats } from "../hooks/useGithubStats";
+import { StatCardSkeleton } from "./SkeletonLoader";
 
 const StatCard = ({ number, label }: { number: string | number; label: string }) => (
   <div className="bg-blue-50 dark:bg-gunmetal/50 border border-blue-200 dark:border-blueprint/20 p-6 text-center hover:border-blue-500 dark:hover:border-gold/50 transition-colors">
@@ -38,7 +39,7 @@ export function Workshop() {
     threshold: 0.1
   });
 
-  const { stats, error } = useGithubStats("mikebikeking");
+  const { stats, error, loading } = useGithubStats("mikebikeking");
 
 
   const workshopSections: Record<TabKey, Section> = {
@@ -373,13 +374,24 @@ describe('Button', () => {
         </AnimatePresence>
         {/* Bottom Stats - Professional & Impressive */}
         <div className="grid md:grid-cols-4 gap-6 mt-12">
-          <StatCard
-            number={stats?.contributionsThisYear || 0}
-            label="2025 Contributions"
-          />
-          <StatCard number={stats?.totalRepos || 0} label="Projects Built" />
-          <StatCard number="Mechanic → Dev" label="Unique Journey" />
-          <StatCard number="Quality Obsessed" label="Core Value" />
+          {loading ? (
+            <>
+              <StatCardSkeleton />
+              <StatCardSkeleton />
+              <StatCardSkeleton />
+              <StatCardSkeleton />
+            </>
+          ) : (
+            <>
+              <StatCard
+                number={stats?.contributionsThisYear || 0}
+                label="2025 Contributions"
+              />
+              <StatCard number={stats?.totalRepos || 0} label="Projects Built" />
+              <StatCard number="Mechanic → Dev" label="Unique Journey" />
+              <StatCard number="Quality Obsessed" label="Core Value" />
+            </>
+          )}
         </div>
 
         {/* Show error if any */}

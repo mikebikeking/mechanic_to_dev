@@ -1,10 +1,41 @@
 import { ChevronDownIcon, CodeIcon, WrenchIcon, ZapIcon } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useTransform, useMotionValue, useSpring } from "framer-motion";
 import { useEffect } from "react";
 import { MagneticButton } from "./MagneticButton";
 import { MagneticLink } from "./MagneticLink";
+import { ParticleEffect } from "./ParticleEffect";
+import { useTypingEffect } from "../hooks/useTypingEffect";
 
 export function Hero() {
+  const { displayedText } = useTypingEffect(
+    "20 years of mechanical mastery, now building pixel-perfect web experiences",
+    50,
+    1000
+  );
+  
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  
+  const springConfig = { damping: 25, stiffness: 150 };
+  const gradientX = useSpring(mouseX, springConfig);
+  const gradientY = useSpring(mouseY, springConfig);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const { clientX, clientY } = e;
+      const { innerWidth, innerHeight } = window;
+      
+      const x = (clientX / innerWidth - 0.5) * 100;
+      const y = (clientY / innerHeight - 0.5) * 100;
+      
+      mouseX.set(x);
+      mouseY.set(y);
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, [mouseX, mouseY]);
+
   useEffect(() => {
     console.log(
       `
@@ -53,6 +84,10 @@ export function Hero() {
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-white/30 to-blue-50/50 dark:from-black/70 dark:via-gunmetal/50 dark:to-black/70">
         <motion.div
           className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,214,10,0.15),transparent_50%)]"
+          style={{
+            x: gradientX,
+            y: gradientY,
+          }}
           animate={{
             scale: [1, 1.2, 1],
             opacity: [0.3, 0.5, 0.3],
@@ -65,6 +100,10 @@ export function Hero() {
         />
         <motion.div
           className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(10,132,255,0.15),transparent_50%)]"
+          style={{
+            x: useTransform(gradientX, (x) => -x * 0.5),
+            y: useTransform(gradientY, (y) => -y * 0.5),
+          }}
           animate={{
             scale: [1.2, 1, 1.2],
             opacity: [0.3, 0.5, 0.3],
@@ -78,7 +117,9 @@ export function Hero() {
         />
       </div>
       <div className="absolute inset-0 grid-pattern opacity-30"></div>
-      <motion.div className="absolute top-20 left-10 w-32 h-32">
+      <motion.div 
+        className="absolute top-20 left-10 w-32 h-32"
+      >
         <motion.svg
           viewBox="0 0 100 100"
           className="w-full h-full"
@@ -162,8 +203,9 @@ export function Hero() {
             transition={{
               duration: 0.6,
             }}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-gold/10 border border-gold/30 backdrop-blur-sm"
+            className="relative inline-flex items-center gap-2 px-4 py-2 bg-gold/10 border border-gold/30 backdrop-blur-sm overflow-hidden"
           >
+            <ParticleEffect />
             <motion.div
               animate={{
                 scale: [1, 1.2, 1],
@@ -175,7 +217,7 @@ export function Hero() {
             >
               <ZapIcon className="text-gold" size={16} />
             </motion.div>
-            <span className="text-gold text-sm font-mono">
+            <span className="text-gold text-sm font-mono relative z-10">
               AVAILABLE FOR HIRE
             </span>
           </motion.div>
@@ -244,9 +286,8 @@ export function Hero() {
             className="flex items-center justify-center gap-4 text-gray-600 dark:text-textSecondary"
           >
             <WrenchIcon className="text-blue-600 dark:text-gold" size={24} />
-            <p className="text-xl sm:text-2xl font-body max-w-2xl text-gray-600 dark:text-textSecondary">
-              20 years of mechanical mastery, now building pixel-perfect web
-              experiences
+            <p className="text-xl sm:text-2xl font-body max-w-2xl text-gray-600 dark:text-textSecondary min-h-[3.5rem] flex items-center">
+              {displayedText}
             </p>
             <CodeIcon className="text-blue-600 dark:text-blueprint" size={24} />
           </motion.div>
