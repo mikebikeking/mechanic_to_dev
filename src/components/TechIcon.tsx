@@ -86,14 +86,32 @@ export const TechIcon: React.FC<TechIconProps> = ({
   }
 
   const Icon = techInfo.icon;
+  
+  // Theme-aware colors for black/dark logos
+  const getIconColor = () => {
+    const darkLogos = ['Next.js', 'Vercel', 'GitHub'];
+    if (darkLogos.includes(tech)) {
+      return 'currentColor'; // Will use text color from parent
+    }
+    return techInfo.color;
+  };
 
   return showLabel ? (
     <span className="inline-flex items-center gap-1.5 px-2 py-1 bg-white dark:bg-gunmetal/50 border border-gray-300 dark:border-blueprint/30 rounded-sm hover:border-blue-500 dark:hover:border-gold transition-colors">
-      <Icon size={size} style={{ color: techInfo.color }} />
+      <Icon 
+        size={size} 
+        style={{ color: getIconColor() }} 
+        className={tech === 'Next.js' || tech === 'Vercel' || tech === 'GitHub' ? 'text-gray-900 dark:text-white' : ''}
+      />
       <span className="text-xs font-mono text-gray-700 dark:text-textSecondary">{tech}</span>
     </span>
   ) : (
-    <Icon size={size} style={{ color: techInfo.color }} title={tech} />
+    <Icon 
+      size={size} 
+      style={{ color: getIconColor() }} 
+      title={tech}
+      className={tech === 'Next.js' || tech === 'Vercel' || tech === 'GitHub' ? 'text-gray-900 dark:text-white' : ''}
+    />
   );
 };
 

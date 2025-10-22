@@ -37,11 +37,34 @@ export function Navigation() {
   }, [navItems, dispatch]);
 
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      dispatch(appActions.setMenuOpen(false));
-    }
+    // Close mobile menu immediately
+    dispatch(appActions.setMenuOpen(false));
+    
+    // Try multiple times to find the element (for lazy loading)
+    let attempts = 0;
+    const maxAttempts = 10;
+    
+    const tryScroll = () => {
+      const element = document.getElementById(id);
+      
+      if (element) {
+        // Element found - scroll to it
+        const yOffset = -80; // Account for fixed navbar
+        const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        
+        window.scrollTo({
+          top: y,
+          behavior: 'smooth'
+        });
+      } else if (attempts < maxAttempts) {
+        // Element not found yet - try again
+        attempts++;
+        setTimeout(tryScroll, 100); // Increased delay for Contact section
+      }
+    };
+    
+    // Start trying
+    tryScroll();
   };
 
   return (

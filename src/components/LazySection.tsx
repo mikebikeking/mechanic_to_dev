@@ -19,7 +19,7 @@ export const LazySection: React.FC<LazySectionProps> = ({
   children,
   fallback = <DefaultFallback />,
   threshold = 0.1,
-  rootMargin = '50px',
+  rootMargin = '3000px',
   className = '',
 }) => {
   const { ref, inView } = useInView({
