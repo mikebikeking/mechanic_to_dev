@@ -31,28 +31,30 @@ export function App() {
             <CursorTrail />
           <div className="relative z-10">
             <Navigation />
-            <Hero />
-          <LazySection>
-            <LazyAbout />
-          </LazySection>
-          <LazySection>
-            <LazySkills />
-          </LazySection>
-          <LazySection>
-            <LazyProjects />
-          </LazySection>
-          <LazySection>
-            <LazyWorkshop />
-          </LazySection>
-          <LazySection>
-            <LazyExperience />
-          </LazySection>
-          <LazySection>
-            <LazyEducation />
-          </LazySection>
-          <LazySection>
-            <LazyContact />
-          </LazySection>
+            <main role="main" aria-label="Main Content">
+              <Hero />
+              <LazySection>
+                <LazyAbout />
+              </LazySection>
+              <LazySection>
+                <LazySkills />
+              </LazySection>
+              <LazySection>
+                <LazyProjects />
+              </LazySection>
+              <LazySection>
+                <LazyWorkshop />
+              </LazySection>
+              <LazySection>
+                <LazyExperience />
+              </LazySection>
+              <LazySection>
+                <LazyEducation />
+              </LazySection>
+              <LazySection>
+                <LazyContact />
+              </LazySection>
+            </main>
         </div>
           </div>
         </PageTransition>

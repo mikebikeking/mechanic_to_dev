@@ -80,6 +80,8 @@ export function Hero() {
   return (
     <section
       id="home"
+      aria-label="Hero - Michael King Frontend Developer"
+      role="banner"
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-transparent"
     >
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-white/30 to-blue-50/50 dark:from-black/70 dark:via-gunmetal/50 dark:to-black/70">

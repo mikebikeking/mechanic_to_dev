@@ -58,6 +58,7 @@ export function About() {
   return (
     <section
       id="about"
+      aria-label="About Michael King"
       className="py-20 bg-gray-50/80 dark:bg-gunmetal/50 backdrop-blur-sm relative overflow-hidden"
     >
       {/* Animated background elements */}

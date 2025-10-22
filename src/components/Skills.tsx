@@ -56,7 +56,7 @@ export function Skills() {
       }
     }
   };
-  return <section id="skills" className="py-20 bg-white/80 dark:bg-black/50 backdrop-blur-sm relative overflow-hidden">
+  return <section id="skills" aria-label="Technical Skills and Expertise" className="py-20 bg-white/80 dark:bg-black/50 backdrop-blur-sm relative overflow-hidden">
       {/* Animated background */}
       <motion.div className="absolute inset-0 opacity-10" style={{
       backgroundImage: 'radial-gradient(circle, rgba(255, 214, 10, 0.1) 1px, transparent 1px)',

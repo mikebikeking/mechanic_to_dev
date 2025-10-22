@@ -28,7 +28,7 @@ export function Experience() {
     period: '2006 - 2022',
     highlights: ['Progressed from technician to part-owner of bicycle shop', 'Led teams and managed day-to-day operations', 'Built reputation for precision and quality craftsmanship']
   }];
-  return <section id="experience" className="py-20 bg-gray-50/80 dark:bg-black/50 backdrop-blur-sm relative overflow-hidden">
+  return <section id="experience" aria-label="Professional Experience and Career Timeline" className="py-20 bg-gray-50/80 dark:bg-black/50 backdrop-blur-sm relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl opacity-30" />
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

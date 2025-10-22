@@ -89,7 +89,7 @@ export function Contact() {
   }];
 
   return (
-    <section id="contact" className="py-20 bg-gray-50/80 dark:bg-black/50 backdrop-blur-sm">
+    <section id="contact" aria-label="Contact Information and Form" className="py-20 bg-gray-50/80 dark:bg-black/50 backdrop-blur-sm">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading text-blue-700 dark:text-gold mb-4">

@@ -1,0 +1,125 @@
+MICHAEL KING
+Frontend Developer
+Boston, MA, USA
+Email: Mike@mikeking.dev
+Phone: +1-321-652-3647
+Portfolio: https://mikeking.dev
+LinkedIn: https://linkedin.com/in/michael-king-804b6037
+GitHub: https://github.com/mikebikeking
+
+================================================================================
+SUMMARY
+================================================================================
+Frontend Developer with 20+ years of mechanical precision engineering expertise, 
+now building pixel-perfect web experiences. Specialized in React, TypeScript, 
+and modern web technologies. Proven track record of delivering performant, 
+accessible, and user-centric applications. Available for full-time and contract 
+opportunities.
+
+================================================================================
+TECHNICAL SKILLS
+================================================================================
+Languages:          JavaScript (ES6+), TypeScript, HTML5, CSS3
+Frameworks/Libraries: React, Next.js, Redux, Framer Motion
+Styling:            TailwindCSS, CSS Modules, Responsive Design
+Tools:              Git, GitHub, npm, Vite, Vercel, Firebase
+APIs:               REST APIs, Firestore, EmailJS
+Best Practices:     Web Accessibility (WCAG), Performance Optimization, 
+                    SEO, Agile Development, Clean Code
+
+================================================================================
+PROFESSIONAL EXPERIENCE
+================================================================================
+
+Freelance Frontend Developer
+Self-Employed | 2023 - Present | Remote
+
+• Built full-stack consulting website (E-Port Engineering) with Firebase CMS,
+  dynamic service pages, and admin dashboard - React, TypeScript, Firestore
+  
+• Developed interactive lab services frontend (2Twenty Labs) with real-time 
+  updates and mobile optimization - React, TypeScript, TailwindCSS
+  
+• Implemented performance optimizations achieving 90+ Lighthouse scores
+  through lazy loading, code splitting, and image optimization
+  
+• Integrated third-party APIs and authentication systems for secure user 
+  experiences
+  
+• Collaborated with clients to translate business requirements into technical
+  solutions with modern UI/UX practices
+
+
+Precision Mechanic & Technical Lead
+Various Organizations | 2003 - 2023 | Boston, MA
+
+• 20+ years managing complex mechanical systems with precision and attention
+  to detail
+  
+• Led troubleshooting and problem-solving for high-stakes technical challenges
+  
+• Trained and mentored team members on best practices and quality standards
+  
+• Applied systematic thinking and process optimization - skills now applied to
+  web development workflows
+
+================================================================================
+EDUCATION & CERTIFICATIONS
+================================================================================
+
+The Frontend Developer Career Path
+Scrimba | 2023
+• Comprehensive frontend development training covering React, JavaScript, 
+  responsive design, and modern web development best practices
+
+React Course
+Frontend Simplified | 2023
+• Advanced React patterns, hooks, state management, and performance optimization
+
+================================================================================
+FEATURED PROJECTS
+================================================================================
+
+E-Port Engineering (https://eportengineering.com)
+Full-stack consulting website with CMS and admin dashboard
+Tech: React, TypeScript, Firebase, Firestore, Tailwind CSS, Vite
+• Dynamic service pages with real-time content updates
+• Admin dashboard for content management
+• Mobile-first responsive design
+• Performance Score: 92/100
+
+2Twenty Labs (https://2twentylabs.com)
+Interactive lab services frontend with real-time updates
+Tech: React, TypeScript, Tailwind CSS, Framer Motion
+• Real-time service availability updates
+• Mobile-optimized user experience
+• Smooth animations and transitions
+• Accessibility compliant (WCAG AA)
+
+Personal Portfolio (https://mikeking.dev)
+Modern developer portfolio with advanced interactions
+Tech: React, TypeScript, TailwindCSS, Framer Motion, Vercel Analytics
+• 3D tilt effects and magnetic button interactions
+• Custom logo animation and typing effects
+• GitHub API integration for live stats
+• SEO optimized with structured data
+
+================================================================================
+WORK AUTHORIZATION
+================================================================================
+US Citizen - Authorized to work in the United States
+
+================================================================================
+AVAILABILITY
+================================================================================
+Available for full-time and contract positions - Remote or Boston, MA
+
+================================================================================
+CONTACT
+================================================================================
+Email: Mike@mikeking.dev
+Phone: +1-321-652-3647
+Website: https://mikeking.dev
+LinkedIn: https://linkedin.com/in/michael-king-804b6037
+GitHub: https://github.com/mikebikeking
+

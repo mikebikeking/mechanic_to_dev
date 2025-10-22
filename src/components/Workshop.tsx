@@ -260,6 +260,7 @@ describe('Button', () => {
   return (
     <section
       id="workshop"
+      aria-label="Development Workflow and GitHub Statistics"
       className="py-20 bg-white/80 dark:bg-gunmetal/50 backdrop-blur-sm relative overflow-hidden"
     >
       {/* Animated background elements */}

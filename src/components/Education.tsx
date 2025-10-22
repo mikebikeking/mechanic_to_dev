@@ -32,7 +32,7 @@ export function Education() {
     year: 'Feb 2025',
     color: 'gold'
   }];
-  return <section className="py-20 bg-white/80 dark:bg-gunmetal/50 backdrop-blur-sm relative overflow-hidden">
+  return <section id="education" aria-label="Education and Certifications" className="py-20 bg-white/80 dark:bg-gunmetal/50 backdrop-blur-sm relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-blueprint/5 rounded-full blur-3xl opacity-30" />
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
