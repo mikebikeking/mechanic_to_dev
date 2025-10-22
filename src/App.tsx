@@ -10,6 +10,7 @@ import { LazyAbout, LazySkills, LazyProjects, LazyWorkshop, LazyExperience, Lazy
 import { PageTransition } from './components/PageTransition';
 import { useSmoothScroll } from './hooks/useSmoothScroll';
 import { ScrollProgress } from './components/ScrollProgress';
+import { LogoAnimation } from './components/LogoAnimation';
 
 export function App() {
   useSmoothScroll();
@@ -17,6 +18,7 @@ export function App() {
   return (
     <AppProvider>
       <ErrorBoundary>
+        <LogoAnimation />
         <LoadingAnimation />
         <ScrollProgress />
         <PageTransition>
