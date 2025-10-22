@@ -1,57 +1,118 @@
-import { useEffect, useRef } from 'react';
+// components/BikePathBackground.tsx
+import { useScroll, useTransform, motion } from 'framer-motion';
+
 export function BikePathBackground() {
-  const bgRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const handleScroll = () => {
-      if (bgRef.current) {
-        const scrollY = window.scrollY;
-        // Parallax effect: move at 0.3x scroll speed
-        bgRef.current.style.transform = `translateY(${scrollY * 0.3}px)`;
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-  return <div className="fixed inset-0 w-full h-full bg-[#2a2a2a] overflow-hidden" style={{
-    zIndex: -1
-  }}>
-      <div ref={bgRef} className="absolute inset-0 w-full" style={{
-      height: '200%',
-      willChange: 'transform'
-    }}>
-        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style={{
-        position: 'absolute',
-        top: 0,
-        left: 0
-      }}>
+  const { scrollYProgress } = useScroll();
+
+  // Different speeds for parallax layers
+  const y1 = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);   // Slowest
+  const y2 = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);  // Medium
+  const y3 = useTransform(scrollYProgress, [0, 1], ['0%', '150%']);  // Fastest
+
+  return (
+    <div className="fixed inset-0 -z-10 overflow-hidden bg-black">
+      {/* Layer 1 - Slowest (Background Grid) */}
+      <motion.div
+        style={{ y: y1 }}
+        className="absolute inset-0"
+      >
+        <svg
+          className="absolute inset-0 w-full h-[200vh]"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+        >
+          {/* Subtle background grid pattern */}
           <defs>
-            {/* Bike lane pattern that repeats */}
-            <pattern id="bikePattern" x="0" y="0" width="100%" height="400" patternUnits="userSpaceOnUse">
-              {/* Asphalt base */}
-              <rect width="100%" height="400" fill="#2a2a2a" />
-              {/* Left lane edge */}
-              <line x1="20%" y1="0" x2="20%" y2="400" stroke="#555555" strokeWidth="2" />
-              {/* Center dashed line */}
-              <line x1="50%" y1="0" x2="50%" y2="50" stroke="#dddddd" strokeWidth="3" strokeDasharray="40 40" />
-              <line x1="50%" y1="100" x2="50%" y2="150" stroke="#dddddd" strokeWidth="3" />
-              <line x1="50%" y1="200" x2="50%" y2="250" stroke="#dddddd" strokeWidth="3" />
-              <line x1="50%" y1="300" x2="50%" y2="350" stroke="#dddddd" strokeWidth="3" />
-              {/* Right bike lane edge */}
-              <line x1="80%" y1="0" x2="80%" y2="400" stroke="#555555" strokeWidth="2" />
-              {/* Bike lane dashed line */}
-              <line x1="70%" y1="0" x2="70%" y2="400" stroke="#888888" strokeWidth="2" strokeDasharray="20 20" />
-              {/* Bike symbols in the bike lane
-              <g transform="translate(1150, 80)">
-                <path d="M -8,-12 L 0,-20 L 8,-12 M 0,-20 L 0,-8 M -6,-8 L 6,-8 M -10,0 A 10,10 0 1,0 10,0 A 10,10 0 1,0 -10,0 M -3,0 A 3,3 0 1,0 3,0 A 3,3 0 1,0 -3,0" fill="none" stroke="#666666" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </g>
-              <g transform="translate(1150, 280)">
-                <path d="M -8,-12 L 0,-20 L 8,-12 M 0,-20 L 0,-8 M -6,-8 L 6,-8 M -10,0 A 10,10 0 1,0 10,0 A 10,10 0 1,0 -10,0 M -3,0 A 3,3 0 1,0 3,0 A 3,3 0 1,0 -3,0" fill="none" stroke="#666666" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </g> */}
+            <pattern
+              id="grid-slow"
+              x="0"
+              y="0"
+              width="100"
+              height="100"
+              patternUnits="userSpaceOnUse"
+            >
+              <path
+                d="M 100 0 L 0 0 0 100"
+                fill="none"
+                stroke="rgba(255, 214, 10, 0.05)"
+                strokeWidth="1"
+              />
             </pattern>
           </defs>
-          {/* Apply the pattern */}
-          <rect width="100%" height="100%" fill="url(#bikePattern)" />
+          <rect width="100%" height="100%" fill="url(#grid-slow)" />
         </svg>
-      </div>
-    </div>;
+      </motion.div>
+
+      {/* Layer 2 - Medium Speed (Bike Lane Lines) */}
+      <motion.div
+        style={{ y: y2 }}
+        className="absolute inset-0"
+      >
+        <svg
+          className="absolute inset-0 w-full h-[200vh]"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+        >
+          {/* Center dashed line - gold */}
+          <line
+            x1="50%"
+            y1="0"
+            x2="50%"
+            y2="100%"
+            stroke="rgba(255, 214, 10, 0.3)"
+            strokeWidth="4"
+            strokeDasharray="60 40"
+          />
+          
+          {/* Left lane line - white */}
+          <line
+            x1="30%"
+            y1="0"
+            x2="30%"
+            y2="100%"
+            stroke="rgba(255, 255, 255, 0.15)"
+            strokeWidth="2"
+            strokeDasharray="30 20"
+          />
+          
+          {/* Right lane line - white */}
+          <line
+            x1="70%"
+            y1="0"
+            x2="70%"
+            y2="100%"
+            stroke="rgba(255, 255, 255, 0.15)"
+            strokeWidth="2"
+            strokeDasharray="30 20"
+          />
+        </svg>
+      </motion.div>
+
+      {/* Layer 3 - Fastest (Small accent dots) */}
+      <motion.div
+        style={{ y: y3 }}
+        className="absolute inset-0"
+      >
+        <svg
+          className="absolute inset-0 w-full h-[200vh]"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+        >
+          {/* Small circular markers along the center line */}
+          {Array.from({ length: 20 }).map((_, i) => (
+            <circle
+              key={i}
+              cx="50%"
+              cy={`${i * 5}%`}
+              r="2"
+              fill="rgba(255, 214, 10, 0.2)"
+            />
+          ))}
+        </svg>
+      </motion.div>
+
+      {/* Gradient overlay for depth */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80 pointer-events-none" />
+    </div>
+  );
 }

@@ -21,23 +21,23 @@ export function Projects() {
       title: "Portfolio Website",
       subtitle: "The Pro Build",
       description:
-        "A minimal, light and dark themed portfolio website built with HTML and CSS. Features smooth scrolling, responsive design, and subtle animations.",
-      tech: ["React", "TailwindCSS", "Vite"],
+        "The design of this portfolio prioritizes a professional, content-first user experience built on modern web standards. By utilizing React's component architecture and a strategic Single-Page flow, the site delivers a cohesive and high-performance experience.",
+      tech: ["React", "TailwindCSS", "JavaScript"],
       metrics: [
         {
           icon: ZapIcon,
-          label: "Performance",
-          value: "Sub-2s analysis",
+          label: "Foundational Tech",
+          value: "Component-Based Architecture (React)",
         },
         {
           icon: TargetIcon,
-          label: "Accuracy",
-          value: "98% detection",
+          label: "Responsiveness",
+          value: "100% Multi-Device Optimization",
         },
         {
           icon: TrendingUpIcon,
-          label: "Engagement",
-          value: "+60% improvement",
+          label: "Technical Style",
+          value: "Modern CSS3 and ES6+",
         },
       ],
       liveUrl: "https://eportfolio-king.vercel.app/",
@@ -67,21 +67,21 @@ export function Projects() {
           value: "Seamless updates",
         },
       ],
-      liveUrl: "#",
-      codeUrl: "#",
+      liveUrl: "https://michael-internship.vercel.app/",
+      codeUrl: "https://github.com/mikebikeking/michael-internship",
       image: work1,
     },
     {
       title: "Little Lemon",
       subtitle: "The Lightweight Climber",
       description:
-        "A comprehensive React framework featuring modular reusable components, built-in performance monitoring with web vitals tracking, integrated testing utilities with custom matchers, and mock API functionality designed to streamline development and accelerate the creation of scalable, maintainable web applications.",
+        "This project is engineered for Architectural Quality and Data-Driven UX, moving beyond traditional styling to embed performance at its core. Built on React 18 and an Enterprise-Ready component structure, the design is modular, scalable, and built for team collaboration.",
       tech: ["React", "JavaScript", "Json", "npm"],
       metrics: [
         {
           icon: ZapIcon,
-          label: "Integration",
-          value: "REST API",
+          label: "Routing Design",
+          value: "Seamless Client-Side Routing (React Router)",
         },
         {
           icon: TargetIcon,
@@ -94,8 +94,8 @@ export function Projects() {
           value: "Robust handling",
         },
       ],
-      liveUrl: "#",
-      codeUrl: "#",
+      liveUrl: "https://meta-front-end-developer-six.vercel.app/",
+      codeUrl: "https://github.com/mikebikeking/meta-front-end-developer",
       image: work3,
     },
   ];
@@ -292,6 +292,8 @@ export function Projects() {
                 <img
                   src={project.image}
                   alt={project.title}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute top-2 right-2 px-3 py-1 bg-gold text-gunmetal text-xs font-heading">

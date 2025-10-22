@@ -8,11 +8,17 @@ import { Education } from './components/Education';
 import { Contact } from './components/Contact';
 import { BikePathBackground } from './components/BikePathBackground';
 import { Workshop } from './components/Workshop';
+import { CursorTrail } from './components/CursorTrail';
+import { LoadingAnimation } from './components/LoadingAnimation';
 
 
 export function App() {
-  return <div className="w-full min-h-screen bg-transparent">
+  return(
+  <>
+  <LoadingAnimation />
+  <div className="w-full min-h-screen bg-transparent">
       <BikePathBackground />
+      <CursorTrail />
       <div className="relative z-10">
         <Navigation />
         <Hero />
@@ -25,4 +31,6 @@ export function App() {
         <Contact />
       </div>
     </div>;
+  </> 
+  );
 }

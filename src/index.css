@@ -47,3 +47,15 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(180deg, #FF6B35, #FFD700);
 }
+
+/* Hide default cursor on desktop */
+@media (min-width: 768px) {
+  * {
+    cursor: none !important;
+  }
+  
+  /* Show cursor on interactive elements */
+  a, button, input, textarea, select {
+    cursor: pointer !important;
+  }
+}
