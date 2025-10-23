@@ -8,6 +8,8 @@ interface MagneticButtonProps {
   onClick?: () => void;
   disabled?: boolean;
   type?: 'button' | 'submit' | 'reset';
+  as?: 'button' | 'a';
+  href?: string;
 }
 
 export const MagneticButton: React.FC<MagneticButtonProps> = ({
@@ -17,8 +19,10 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
   onClick,
   disabled = false,
   type = 'button',
+  as = 'button',
+  href,
 }) => {
-  const ref = useRef<HTMLButtonElement>(null);
+  const ref = useRef<HTMLButtonElement | HTMLAnchorElement>(null);
   const [isHovered, setIsHovered] = useState(false);
 
   const x = useMotionValue(0);
@@ -28,7 +32,7 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
   const springX = useSpring(x, springConfig);
   const springY = useSpring(y, springConfig);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
     if (!ref.current || disabled) return;
 
     const rect = ref.current.getBoundingClientRect();
@@ -48,13 +52,16 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
     y.set(0);
   };
 
+  const Component = motion[as];
+  const props = as === 'a' 
+    ? { href, ref: ref as React.Ref<HTMLAnchorElement> }
+    : { type, disabled, ref: ref as React.Ref<HTMLButtonElement> };
+
   return (
-    <motion.button
-      ref={ref}
-      type={type}
+    <Component
+      {...props}
       className={className}
       onClick={onClick}
-      disabled={disabled}
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
@@ -67,7 +74,7 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
       transition={{ duration: 0.2 }}
     >
       {children}
-    </motion.button>
+    </Component>
   );
 };
 

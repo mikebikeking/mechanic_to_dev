@@ -27,7 +27,7 @@ const StatCard = ({
   </div>
 );
 
-export function Workshop() {
+export function Workspace() {
   type Tool = { name: string; purpose: string };
   type Item = { category: string; tools: Tool[] };
   type Section = {
@@ -49,7 +49,7 @@ export function Workshop() {
 
   const { stats, error, loading } = useGithubStats("mikebikeking");
 
-  const workshopSections: Record<TabKey, Section> = {
+  const workspaceSections: Record<TabKey, Section> = {
     vscode: {
       icon: Code2,
       title: "VSCode Setup",
@@ -254,12 +254,12 @@ describe('Button', () => {
     },
   };
 
-  const currentSection = workshopSections[activeTab];
+  const currentSection = workspaceSections[activeTab];
   const Icon = currentSection.icon;
 
   return (
     <section
-      id="workshop"
+      id="workspace"
       aria-label="Development Workflow and GitHub Statistics"
       className="py-20 bg-white/80 dark:bg-gunmetal/50 backdrop-blur-sm relative overflow-hidden"
     >
@@ -275,10 +275,11 @@ describe('Button', () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading text-blue-700 dark:text-gold mb-4">
-            THE WORKSHOP
+            THE WORKSPACE
           </h2>
-          <p className="text-xl text-textSecondary font-heading italic">
-            "Every good mechanic has a clean workspace"
+          <p className="text-xl text-textSecondary font-heading italic mb-2">
+            The same discipline that keeps tools organized keeps code
+            maintainable.
           </p>
           <motion.div
             className="w-24 h-1 bg-blue-500 dark:bg-blueprint mx-auto mt-4"
@@ -296,7 +297,7 @@ describe('Button', () => {
           transition={{ duration: 0.8 }}
           className="flex flex-wrap justify-center gap-4 mb-12"
         >
-          {Object.entries(workshopSections).map(([key, section]) => {
+          {Object.entries(workspaceSections).map(([key, section]) => {
             const k = key as TabKey;
             const TabIcon = section.icon;
             return (

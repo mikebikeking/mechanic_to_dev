@@ -41,17 +41,14 @@ A modern, high-performance portfolio website built with React, TypeScript, and T
    npm install
    ```
 
-3. **Set up environment variables**
+3. **Set up environment variables** (Optional)
    ```bash
-   cp env.example .env.local
+   cp env.example .env
    ```
    
-   Update the following variables in `.env.local`:
+   Update the following variables in `.env`:
    ```env
-   VITE_EMAILJS_SERVICE_ID=your_service_id
-   VITE_EMAILJS_TEMPLATE_ID=your_template_id
-   VITE_EMAILJS_PUBLIC_KEY=your_public_key
-   VITE_GITHUB_TOKEN=your_github_token
+   VITE_GITHUB_TOKEN=your_github_token  # Optional - for GitHub stats
    ```
 
 4. **Start development server**

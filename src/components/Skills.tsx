@@ -81,9 +81,8 @@ export function Skills() {
         duration: 0.8
       }} className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading text-blue-700 dark:text-gold mb-4">
-            THE DRIVETRAIN
+            THE TOOLKIT
           </h2>
-          <p className="text-xl text-gray-600 dark:text-textSecondary font-heading">THE TOOLKIT</p>
           <motion.div className="w-24 h-1 bg-blueprint mx-auto mt-4" initial={{
           width: 0
         }} whileInView={{

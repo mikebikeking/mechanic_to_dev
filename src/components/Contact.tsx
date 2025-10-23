@@ -1,65 +1,9 @@
-import React, { useState } from 'react';
-import { GithubIcon, LinkedinIcon, MailIcon, FileText, PhoneIcon, MapPinIcon, SendIcon } from 'lucide-react';
-import emailjs from '@emailjs/browser';
+import { GithubIcon, LinkedinIcon, MailIcon, FileText, MapPinIcon, SendIcon } from 'lucide-react';
 import resume from '../assets/Michael_King_Resume.pdf';
 import { MagneticButton } from './MagneticButton';
 
 
-const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_nnjw6mh';
-const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_wa84bw7';
-const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || '3xJHrGFTGXPgQMtws';
-
-
 export function Contact() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-  const [isSending, setIsSending] = useState(false);
-  const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
-  const [statusMessage, setStatusMessage] = useState('');
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-    if (status !== 'idle') {
-      setStatus('idle');
-      setStatusMessage('');
-    }
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSending(true);
-    setStatusMessage('Sending message...');
-
-    const templateParams = {
-      from_name: formData.name,
-      from_email: formData.email,
-      message: formData.message,
-    };
-
-    emailjs.send(
-      SERVICE_ID,
-      TEMPLATE_ID,
-      templateParams,
-      PUBLIC_KEY
-    )
-      .then(() => {
-        setStatus('success');
-        setStatusMessage('Message sent successfully! Thanks for reaching out.');
-        setFormData({ name: '', email: '', message: '' });
-        setIsSending(false);
-      }, (error) => {
-        console.error('EmailJS FAILED...', error);
-        setStatus('error');
-        setStatusMessage('Failed to send message. Please try the direct email link.');
-        setIsSending(false);
-      });
-  };
 
   const socialLinks = [{
     icon: GithubIcon,
@@ -76,16 +20,6 @@ export function Contact() {
     label: 'Resume',
     url: resume,
     color: 'torch'
-  }];
-  const contactInfo = [{
-    icon: MailIcon,
-    label: 'Mike@mikeking.dev'
-  }, {
-    icon: PhoneIcon,
-    label: '(321) 652-3647'
-  }, {
-    icon: MapPinIcon,
-    label: 'Boston, Massachusetts'
   }];
 
   return (
@@ -104,73 +38,50 @@ export function Contact() {
           <div className="w-24 h-1 bg-blue-500 dark:bg-blueprint mx-auto mt-4"></div>
         </div>
         <div className="grid md:grid-cols-2 gap-12">
-          {/* Contact Form */}
-          <div>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Name Input */}
-              <div>
-                <label htmlFor="name" className="block text-gray-900 dark:text-textPrimary font-heading text-sm mb-2">
-                  NAME
-                </label>
-                <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required className="w-full px-4 py-3 min-h-[48px] text-base bg-white dark:bg-gunmetal border-2 border-blue-300 dark:border-blueprint/30 text-gray-900 dark:text-textPrimary focus:border-blue-600 dark:focus:border-gold focus:outline-none transition-colors" placeholder="Your name" disabled={isSending} />
+          {/* Email CTA */}
+          <div className="flex flex-col justify-center">
+            <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gunmetal dark:to-blueprint/10 border-2 border-blue-200 dark:border-blueprint/30 p-8 md:p-12">
+              <div className="text-center mb-8">
+                <MailIcon className="w-16 h-16 mx-auto mb-4 text-blue-600 dark:text-gold" />
+                <h3 className="text-2xl md:text-3xl font-heading text-gray-900 dark:text-textPrimary mb-3">
+                  GET IN TOUCH
+                </h3>
+                <p className="text-gray-600 dark:text-textSecondary font-mono text-sm">
+                  Ready to discuss your next project?
+                </p>
               </div>
-              {/* Email Input */}
-              <div>
-                <label htmlFor="email" className="block text-gray-900 dark:text-textPrimary font-heading text-sm mb-2">
-                  EMAIL
-                </label>
-                <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required className="w-full px-4 py-3 min-h-[48px] text-base bg-white dark:bg-gunmetal border-2 border-blue-300 dark:border-blueprint/30 text-gray-900 dark:text-textPrimary focus:border-blue-600 dark:focus:border-gold focus:outline-none transition-colors" placeholder="your.email@example.com" disabled={isSending} />
-              </div>
-              {/* Message Textarea */}
-              <div>
-                <label htmlFor="message" className="block text-gray-900 dark:text-textPrimary font-heading text-sm mb-2">
-                  MESSAGE
-                </label>
-                <textarea id="message" name="message" value={formData.message} onChange={handleChange} required rows={6} className="w-full px-4 py-3 min-h-[120px] text-base bg-white dark:bg-gunmetal border-2 border-blue-300 dark:border-blueprint/30 text-gray-900 dark:text-textPrimary focus:border-blue-600 dark:focus:border-gold focus:outline-none transition-colors resize-none" placeholder="Tell me about your project..." disabled={isSending} />
-              </div>
-              {/* Submission Button */}
+              
               <MagneticButton
-                type="submit"
+                as="a"
+                href="mailto:Mike@mikeking.dev?subject=Let's%20Work%20Together&body=Hi%20Mike,%0D%0A%0D%0AI'd%20like%20to%20discuss..."
                 intensity={0.35}
-                disabled={isSending}
-                className={`
-                  w-full px-6 py-4 min-h-[52px] font-heading text-lg transition-all duration-300 transform flex items-center justify-center gap-2
-                  ${isSending 
-                    ? 'bg-blue-400 dark:bg-blueprint text-white dark:text-gunmetal cursor-not-allowed opacity-70' 
-                    : 'bg-blue-600 dark:bg-gold text-white dark:text-gunmetal hover:bg-blue-700 dark:hover:bg-torch shadow-lg hover:shadow-xl hover:shadow-blue-600/50 dark:hover:shadow-gold/50'
-                  }
-                `}
+                className="w-full px-6 py-4 min-h-[52px] font-heading text-lg transition-all duration-300 transform flex items-center justify-center gap-2 bg-blue-600 dark:bg-gold text-white dark:text-gunmetal hover:bg-blue-700 dark:hover:bg-torch shadow-lg hover:shadow-xl hover:shadow-blue-600/50 dark:hover:shadow-gold/50"
               >
                 <SendIcon size={20} />
-                {isSending ? 'SENDING...' : 'SEND MESSAGE'}
+                SEND EMAIL
               </MagneticButton>
 
-              {/* Status Message */}
-              {statusMessage && (
-                <p 
-                  className={`text-center font-mono text-sm pt-2 ${
-                    status === 'success' ? 'text-torch' : status === 'error' ? 'text-red-500' : 'text-blueprint'
-                  }`}
-                >
-                  {statusMessage}
-                </p>
-              )}
-            </form>
-          </div>
-          {/* Contact Info */}
-          <div className="space-y-8">
-            <div>
-              <h3 className="text-2xl font-heading text-gray-900 dark:text-textPrimary mb-6">
-                CONNECT WITH ME
-              </h3>
-              <div className="space-y-4 mb-8">
-                {contactInfo.map((info, index) => <div key={index} className="flex items-center space-x-3 text-gray-600 dark:text-textSecondary">
-                  <info.icon className="text-blue-600 dark:text-blueprint" size={20} />
-                  <span className="font-mono text-sm">{info.label}</span>
-                </div>)}
+              <div className="mt-8 pt-6 border-t border-blue-200 dark:border-blueprint/30 space-y-4">
+                <div>
+                  <p className="text-center text-gray-600 dark:text-textSecondary text-sm font-mono mb-2">
+                    Direct Email:
+                  </p>
+                  <a 
+                    href="mailto:Mike@mikeking.dev" 
+                    className="block text-center text-blue-600 dark:text-blueprint hover:text-blue-800 dark:hover:text-gold transition-colors font-mono text-lg font-semibold"
+                  >
+                    Mike@mikeking.dev
+                  </a>
+                </div>
+                <div className="flex items-center justify-center space-x-2 text-gray-600 dark:text-textSecondary">
+                  <MapPinIcon className="text-blue-600 dark:text-blueprint" size={18} />
+                  <span className="font-mono text-sm">Boston, Massachusetts</span>
+                </div>
               </div>
             </div>
-            <div className="blueprint-line my-8"></div>
+          </div>
+          {/* Social Links & Availability */}
+          <div className="space-y-8">
             <div>
               <h3 className="text-2xl font-heading text-gray-900 dark:text-textPrimary mb-6">
                 SOCIAL LINKS

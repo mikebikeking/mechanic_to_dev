@@ -38,9 +38,7 @@ export function Projects() {
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading text-blue-700 dark:text-gold mb-4">
             THE BUILD JOURNAL
           </h2>
-          <p className="text-xl text-gray-600 dark:text-textSecondary font-heading">
-            FEATURED BUILDS
-          </p>
+         
           <motion.div 
             className="w-24 h-1 bg-blueprint mx-auto mt-4"
             initial={{ width: 0 }}
@@ -70,9 +68,7 @@ export function Projects() {
           <h3 className="text-3xl sm:text-4xl font-heading text-blue-600 dark:text-blueprint mb-2">
             OTHER NOTABLE BUILDS
           </h3>
-          <p className="text-lg text-gray-600 dark:text-textSecondary font-heading">
-            ADDITIONAL PROJECTS & EXPERIMENTS
-          </p>
+         
           <motion.div 
             className="w-20 h-1 bg-blue-500 dark:bg-blueprint mx-auto mt-4"
             initial={{ width: 0 }}
