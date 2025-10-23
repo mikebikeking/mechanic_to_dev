@@ -77,21 +77,21 @@ export const featuredProjects: Project[] = [
     image: work1,
   },
   {
-    id: 'little-lemon',
-    title: 'Little Lemon',
+    id: 'spoke-length-calculator',
+    title: 'Spoke Length Calculator',
     subtitle: 'The Lightweight Climber',
-    description: 'This project is engineered for Architectural Quality and Data-Driven UX, moving beyond traditional styling to embed performance at its core. Built on React 18 and an Enterprise-Ready component structure, the design is modular, scalable, and built for team collaboration.',
+    description: 'An advanced spoke calculator built with React and TypeScript that performs real-time geometric calculations for bicycle wheel building. The application handles complex hub and rim measurements, supporting multiple lacing patterns (radial, 1x-4x cross) while providing instant validation and error prevention. Delivers professional-grade accuracy matching industry tools used by bike shops worldwide.',
     tech: ['React', 'JavaScript', 'Json', 'npm'],
     metrics: [
       {
         icon: ZapIcon,
-        label: 'Routing Design',
-        value: 'Seamless Client-Side Routing (React Router)',
+        label: 'Calculation Engine',
+        value: 'Real-time geometric computations with TypeScript validation',
       },
       {
         icon: TargetIcon,
         label: 'Design',
-        value: 'Fully responsive',
+        value: 'Instant calculations with progressive form validation',
       },
       {
         icon: TrendingUpIcon,
@@ -99,8 +99,8 @@ export const featuredProjects: Project[] = [
         value: 'Robust handling',
       },
     ],
-    liveUrl: 'https://meta-front-end-developer-six.vercel.app/',
-    codeUrl: 'https://github.com/mikebikeking/meta-front-end-developer',
+    liveUrl: 'https://spoke-length-calc-git-master-mikebikekings-projects.vercel.app/',
+    codeUrl: 'https://github.com/mikebikeking/spoke-length-calc',
     image: work3,
   },
 ];
