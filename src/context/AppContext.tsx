@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { createContext, useReducer, ReactNode } from 'react';
 import { AppState, AppAction } from './types';
 import { initialState, appReducer } from './appReducer';

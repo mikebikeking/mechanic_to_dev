@@ -397,7 +397,7 @@ describe('Button', () => {
             <>
               <StatCard
                 number={stats?.contributionsThisYear || 0}
-                label="2025 Contributions"
+                label="GitHub Contributions"
               />
               <StatCard
                 number={stats?.totalRepos || 0}

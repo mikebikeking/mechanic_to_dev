@@ -1,17 +1,16 @@
-import { ChevronDownIcon, CodeIcon, WrenchIcon, ZapIcon } from "lucide-react";
+import { ChevronDownIcon, CodeIcon, WrenchIcon } from "lucide-react";
 import { motion, useTransform, useMotionValue, useSpring } from "framer-motion";
 import { useEffect } from "react";
 import { MagneticButton } from "./MagneticButton";
 import { MagneticLink } from "./MagneticLink";
-import { ParticleEffect } from "./ParticleEffect";
-import { useTypingEffect } from "../hooks/useTypingEffect";
 import { TechIcon } from "./TechIcon";
+import { useTypingEffect } from "../hooks/useTypingEffect";
 
 export function Hero() {
   const { displayedText } = useTypingEffect(
     "20 years of mechanical mastery, now building pixel-perfect web experiences",
-    40,
-    3500
+  40,
+    1500
   );
   
   const mouseX = useMotionValue(0);
@@ -82,7 +81,7 @@ export function Hero() {
       id="home"
       aria-label="Hero - Michael King Frontend Developer"
       role="banner"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-transparent"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-transparent pt-16"
     >
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-white/30 to-blue-50/50 dark:from-black/70 dark:via-gunmetal/50 dark:to-black/70">
         <motion.div
@@ -194,36 +193,6 @@ export function Hero() {
       </motion.div>
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center space-y-8">
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: -20,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-            }}
-            transition={{
-              duration: 0.6,
-            }}
-            className="relative inline-flex items-center gap-2 px-4 py-2 bg-gold/10 border border-gold/30 backdrop-blur-sm overflow-hidden"
-          >
-            <ParticleEffect />
-            <motion.div
-              animate={{
-                scale: [1, 1.2, 1],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-              }}
-            >
-              <ZapIcon className="text-gold" size={16} />
-            </motion.div>
-            <span className="text-gold text-sm font-mono relative z-10">
-              AVAILABLE FOR HIRE
-            </span>
-          </motion.div>
           <motion.div
             initial={{
               opacity: 0,
