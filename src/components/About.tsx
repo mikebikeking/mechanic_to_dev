@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import MikeImage from "../assets/Mike_192.webp";
 import MikeImageWebP from "../assets/Mike_192.webp";
+import { PerformanceMetrics } from "./PerformanceMetrics";
 
 export function About() {
   const [ref, inView] = useInView({
@@ -237,6 +238,9 @@ export function About() {
             </motion.div>
           </motion.div>
         </div>
+        
+        {/* Performance Metrics */}
+        <PerformanceMetrics />
       </div>
     </section>
   );
