@@ -101,7 +101,7 @@ export function About() {
             }}
           />
         </motion.div>
-        <div ref={ref} className="grid md:grid-cols-2 gap-12 items-center">
+        <div ref={ref} className="grid md:grid-cols-2 gap-12 md:items-center">
           <motion.div
             initial={{
               opacity: 0,
@@ -118,7 +118,7 @@ export function About() {
             transition={{
               duration: 0.8,
             }}
-            className="flex justify-center"
+            className="flex justify-center mb-8 md:mb-0"
           >
             <motion.div
               className="relative w-64 h-64 sm:w-80 sm:h-80"
@@ -181,7 +181,7 @@ export function About() {
               }}
               className="text-3xl font-heading text-gray-900 dark:text-textPrimary"
             >
-              FROM TUNING BIKES TO TUNING PIXELS
+              🔧 FROM MECHANIC TO DEVELOPER
             </motion.h3>
             <motion.div
               variants={containerVariants}

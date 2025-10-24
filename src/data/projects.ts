@@ -81,7 +81,7 @@ export const featuredProjects: Project[] = [
     title: 'Spoke Length Calculator',
     subtitle: 'The Lightweight Climber',
     description: 'An advanced spoke calculator built with React and TypeScript that performs real-time geometric calculations for bicycle wheel building. The application handles complex hub and rim measurements, supporting multiple lacing patterns (radial, 1x-4x cross) while providing instant validation and error prevention. Delivers professional-grade accuracy matching industry tools used by bike shops worldwide.',
-    tech: ['React', 'JavaScript', 'Json', 'npm'],
+    tech: ['React', 'JavaScript', 'TailwindCSS'],
     metrics: [
       {
         icon: ZapIcon,
