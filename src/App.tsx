@@ -6,7 +6,7 @@ import { LoadingAnimation } from './components/LoadingAnimation';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { AppProvider } from './context/AppContext';
 import { LazySection } from './components/LazySection';
-import { LazyAbout, LazySkills, LazyProjects, LazyWorkspace, LazyExperience, LazyEducation, LazyContact } from './components/LazyComponents';
+import { LazyAbout, LazySkills, LazySkillsMatch, LazyProjects, LazyWorkspace, LazyExperience, LazyEducation, LazyContact } from './components/LazyComponents';
 import { PageTransition } from './components/PageTransition';
 import { useSmoothScroll } from './hooks/useSmoothScroll';
 import { ScrollProgress } from './components/ScrollProgress';
@@ -36,6 +36,9 @@ export function App() {
               <LazySection>
                 <LazyAbout />
               </LazySection>
+              {/* <LazySection>
+                <LazySkillsMatch />
+              </LazySection> */}
               <LazySection>
                 <LazySkills />
               </LazySection>

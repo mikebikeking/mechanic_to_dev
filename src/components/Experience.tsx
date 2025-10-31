@@ -1,38 +1,64 @@
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { BriefcaseIcon, CalendarIcon } from 'lucide-react';
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { BriefcaseIcon, CalendarIcon } from "lucide-react";
 export function Experience() {
   const [ref, inView] = useInView({
     triggerOnce: false,
-    threshold: 0.1
+    threshold: 0.1,
   });
 
-  const experiences = [{
-    title: 'Frontend Engineer',
-    company: 'Skinstric AI',
-    period: 'Apr 2025 - Jun 2025',
-    highlights: ['Built real-time skin analysis platform with OpenAI Vision API', 'Optimized performance with Next.js for sub-2s analysis time', 'Achieved 98% detection accuracy and 60% engagement improvement']
-  }, {
-    title: 'Frontend Developer & Support',
-    company: 'Frontend Simplified',
-    period: 'Mar 2024 - Mar 2025',
-    highlights: ['Top 5% performance as developer and peer mentor', 'Created learning resources for React and TypeScript', 'Supported students in building production-ready applications']
-  }, {
-    title: 'Assistant Service Manager',
-    company: 'Village Cycle Center',
-    period: 'Sep 2022 - Sep 2025',
-    highlights: ['Diagnosed and resolved complex mechanical problems', 'Managed workflows and inventory systems', 'Maintained high customer satisfaction through attention to detail']
-  }, {
-    title: 'Service Manager & Technician',
-    company: 'Various Bicycle Shops',
-    period: '2006 - 2022',
-    highlights: ['Progressed from technician to part-owner of bicycle shop', 'Led teams and managed day-to-day operations', 'Built reputation for precision and quality craftsmanship']
-  }];
-  return <section id="experience" aria-label="Professional Experience and Career Timeline" className="py-20 bg-gray-50/80 dark:bg-black/50 backdrop-blur-sm relative overflow-hidden">
+  const experiences = [
+    {
+      title: "Frontend Engineer",
+      company: "Skinstric AI",
+      period: "Apr 2025 - Jun 2025",
+      highlights: [
+        "Architected and deployed a multi-page AI analysis platform using React and Vercel for a seamless, production-ready Front-end Development demonstration of modern web capabilities",
+        "Integrated a cloud-based Machine Learning API via axios to execute real-time Computer Vision facial analysis, predicting demographics (age, gender, ethnicity) with dynamic results visualization",
+        "Optimized the user experience (UX) by designing a mobile-responsive interface with TailwindCSS and implementing the AOS library for controlled animations across the application's flow",
+      ],
+    },
+    {
+      title: "Frontend Developer & Support",
+      company: "Frontend Simplified",
+      period: "Mar 2024 - Mar 2025",
+      highlights: [
+        "Top 5% performance as developer and peer mentor",
+        "Created learning resources for React and TypeScript",
+        "Supported students in building production-ready applications",
+      ],
+    },
+    {
+      title: "Assistant Service Manager",
+      company: "Village Cycle Center",
+      period: "Sep 2022 - Sep 2025",
+      highlights: [
+        "Diagnosed and resolved complex mechanical problems",
+        "Managed workflows and inventory systems",
+        "Maintained high customer satisfaction through attention to detail",
+      ],
+    },
+    {
+      title: "Service Manager & Technician",
+      company: "Various Bicycle Shops",
+      period: "2006 - 2022",
+      highlights: [
+        "Progressed from technician to part-owner of bicycle shop",
+        "Led teams and managed day-to-day operations",
+        "Built reputation for precision and quality craftsmanship",
+      ],
+    },
+  ];
+  return (
+    <section
+      id="experience"
+      aria-label="Professional Experience and Career Timeline"
+      className="py-20 bg-gray-50/80 dark:bg-black/50 backdrop-blur-sm relative overflow-hidden"
+    >
       {/* Animated background elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl opacity-30" />
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -43,7 +69,7 @@ export function Experience() {
             THE ROUTE MAP
           </h2>
           <p className="text-xl text-textSecondary font-heading">THE JOURNEY</p>
-          <motion.div 
+          <motion.div
             className="w-24 h-1 bg-blue-500 dark:bg-blueprint mx-auto mt-4"
             initial={{ width: 0 }}
             whileInView={{ width: 96 }}
@@ -51,7 +77,7 @@ export function Experience() {
             transition={{ duration: 0.8, delay: 0.3 }}
           />
         </motion.div>
-        <motion.div 
+        <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -61,8 +87,9 @@ export function Experience() {
           {/* Timeline line */}
           <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-blue-300 dark:bg-blueprint/30 hidden md:block"></div>
           <div className="space-y-12">
-            {experiences.map((exp, index) => <motion.div 
-                key={index} 
+            {experiences.map((exp, index) => (
+              <motion.div
+                key={index}
                 initial={{ opacity: 0, x: -50 }}
                 animate={inView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
@@ -87,15 +114,22 @@ export function Experience() {
                     </div>
                   </div>
                   <ul className="space-y-2">
-                    {exp.highlights.map((highlight, highlightIndex) => <li key={highlightIndex} className="text-gray-600 dark:text-textSecondary text-sm flex items-start">
+                    {exp.highlights.map((highlight, highlightIndex) => (
+                      <li
+                        key={highlightIndex}
+                        className="text-gray-600 dark:text-textSecondary text-sm flex items-start"
+                      >
                         <span className="w-1.5 h-1.5 bg-blue-600 dark:bg-gold mt-2 mr-3 rounded-full flex-shrink-0"></span>
                         <span>{highlight}</span>
-                      </li>)}
+                      </li>
+                    ))}
                   </ul>
                 </div>
-              </motion.div>)}
+              </motion.div>
+            ))}
           </div>
         </motion.div>
       </div>
-    </section>;
+    </section>
+  );
 }

@@ -11,6 +11,7 @@ export function Navigation() {
   const navItems = useMemo(() => [
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About' },
+    // { id: 'skills-match', label: 'Translation' },
     { id: 'skills', label: 'Skills' },
     { id: 'projects', label: 'Projects' },
     { id: 'workspace', label: 'Workspace' },

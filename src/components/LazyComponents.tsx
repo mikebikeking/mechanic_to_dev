@@ -8,3 +8,4 @@ export const LazyEducation = lazy(() => import('./Education').then(module => ({ 
 export const LazyContact = lazy(() => import('./Contact').then(module => ({ default: module.Contact })));
 export const LazySkills = lazy(() => import('./Skills').then(module => ({ default: module.Skills })));
 export const LazyAbout = lazy(() => import('./About').then(module => ({ default: module.About })));
+export const LazySkillsMatch = lazy(() => import('./SkillsMatch').then(module => ({ default: module.SkillsMatch })));
