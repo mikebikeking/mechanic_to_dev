@@ -10,10 +10,10 @@ interface ProjectGridProps {
 export const ProjectGrid: React.FC<ProjectGridProps> = ({ 
   projects, 
   variant,
-  columns = '3'
+  columns = '4'
 }) => {
-  const gridClass = columns === '2' 
-    ? 'grid md:grid-cols-2 gap-8' 
+  const gridClass = columns === '4' 
+    ? 'grid md:grid-cols-2 gap-16' 
     : 'grid md:grid-cols-2 lg:grid-cols-3 gap-8';
 
   return (

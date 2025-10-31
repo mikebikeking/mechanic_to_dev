@@ -23,7 +23,7 @@ export function Experience() {
       company: "Frontend Simplified",
       period: "Mar 2024 - Mar 2025",
       highlights: [
-        "Top 5% performance as developer and peer mentor",
+        "Selected as peer mentor after achieving top 5% performance in cohort, providing debugging support and code reviewsfor 20+ students across React and Next.js projects.",
         "Created learning resources for React and TypeScript",
         "Supported students in building production-ready applications",
       ],
@@ -33,8 +33,8 @@ export function Experience() {
       company: "Village Cycle Center",
       period: "Sep 2022 - Sep 2025",
       highlights: [
-        "Diagnosed and resolved complex mechanical problems",
-        "Managed workflows and inventory systems",
+        "Diagnosed complex bicycle malfunctions and recommended tailored service solutions to meet individual customer needs, demonstrating strong problem-solving and diagnostic skills.",
+        "Managed service department workflow, including efficient scheduling of work orders and meticulous inventory control, showcasing project management and organizational abilities.",
         "Maintained high customer satisfaction through attention to detail",
       ],
     },
@@ -43,8 +43,8 @@ export function Experience() {
       company: "Various Bicycle Shops",
       period: "2006 - 2022",
       highlights: [
-        "Progressed from technician to part-owner of bicycle shop",
-        "Led teams and managed day-to-day operations",
+        "Leveraged 16 years of continuous progression across retail and service environments, advancing from technical roles (Technician) to senior leadership (Service Manager, Part-Owner)",
+        "Managed high-value service department operations and staff, overseeing inventory, workflow, and customer satisfaction, demonstrating scalable business and management skills.",
         "Built reputation for precision and quality craftsmanship",
       ],
     },
