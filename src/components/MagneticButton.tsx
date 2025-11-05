@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import { motion, useSpring, useMotionValue } from 'framer-motion';
+import { GearShift } from './GearShift';
 
 interface MagneticButtonProps {
   children: React.ReactNode;
@@ -10,6 +11,8 @@ interface MagneticButtonProps {
   type?: 'button' | 'submit' | 'reset';
   as?: 'button' | 'a';
   href?: string;
+  showGear?: boolean;
+  gearPosition?: 'left' | 'right';
 }
 
 export const MagneticButton: React.FC<MagneticButtonProps> = ({
@@ -21,6 +24,8 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
   type = 'button',
   as = 'button',
   href,
+  showGear = true,
+  gearPosition = 'right',
 }) => {
   const ref = useRef<HTMLButtonElement | HTMLAnchorElement>(null);
   const [isHovered, setIsHovered] = useState(false);
@@ -52,6 +57,12 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
     y.set(0);
   };
 
+  const handleClick = () => {
+    if (onClick && !disabled) {
+      onClick();
+    }
+  };
+
   const Component = motion[as];
   const props = as === 'a' 
     ? { href, ref: ref as React.Ref<HTMLAnchorElement> }
@@ -61,7 +72,7 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
     <Component
       {...props}
       className={className}
-      onClick={onClick}
+      onClick={handleClick}
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
@@ -70,10 +81,34 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
         y: springY,
       }}
       whileHover={{ scale: isHovered ? 1.05 : 1 }}
-      whileTap={{ scale: disabled ? 1 : 0.95 }}
-      transition={{ duration: 0.2 }}
+      whileTap={{ 
+        scale: disabled ? 1 : 0.95,
+        y: disabled ? 0 : 2, // Mechanical "click" effect
+      }}
+      transition={{ 
+        duration: 0.2,
+        y: { duration: 0.1, ease: 'easeOut' },
+      }}
     >
+      {showGear && gearPosition === 'left' && (
+        <GearShift 
+          size={16} 
+          variant="compact" 
+          className="mr-2" 
+          isParentHovered={isHovered}
+          isParentClicked={false}
+        />
+      )}
       {children}
+      {showGear && gearPosition === 'right' && (
+        <GearShift 
+          size={16} 
+          variant="compact" 
+          className="ml-2"
+          isParentHovered={isHovered}
+          isParentClicked={false}
+        />
+      )}
     </Component>
   );
 };

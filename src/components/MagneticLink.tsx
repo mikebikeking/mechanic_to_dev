@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import { motion, useSpring, useMotionValue } from 'framer-motion';
+import { GearShift } from './GearShift';
 
 interface MagneticLinkProps {
   children: React.ReactNode;
@@ -10,6 +11,8 @@ interface MagneticLinkProps {
   rel?: string;
   'aria-label'?: string;
   download?: boolean;
+  showGear?: boolean;
+  gearPosition?: 'left' | 'right';
 }
 
 export const MagneticLink: React.FC<MagneticLinkProps> = ({
@@ -21,6 +24,8 @@ export const MagneticLink: React.FC<MagneticLinkProps> = ({
   rel,
   'aria-label': ariaLabel,
   download = false,
+  showGear = true,
+  gearPosition = 'right',
 }) => {
   const ref = useRef<HTMLAnchorElement>(null);
   const [isHovered, setIsHovered] = useState(false);
@@ -69,10 +74,34 @@ export const MagneticLink: React.FC<MagneticLinkProps> = ({
         y: springY,
       }}
       whileHover={{ scale: isHovered ? 1.05 : 1 }}
-      whileTap={{ scale: 0.95 }}
-      transition={{ duration: 0.2 }}
+      whileTap={{ 
+        scale: 0.95,
+        y: 2, // Mechanical "click" effect
+      }}
+      transition={{ 
+        duration: 0.2,
+        y: { duration: 0.1, ease: 'easeOut' },
+      }}
     >
+      {showGear && gearPosition === 'left' && (
+        <GearShift 
+          size={16} 
+          variant="compact" 
+          className="mr-2"
+          isParentHovered={isHovered}
+          isParentClicked={false}
+        />
+      )}
       {children}
+      {showGear && gearPosition === 'right' && (
+        <GearShift 
+          size={16} 
+          variant="compact" 
+          className="ml-2"
+          isParentHovered={isHovered}
+          isParentClicked={false}
+        />
+      )}
     </motion.a>
   );
 };

@@ -104,12 +104,12 @@ export const featuredProjects: Project[] = [
       },
     ],
     liveUrl:
-      "https://spoke-length-calc-git-master-mikebikekings-projects.vercel.app/",
+      "https://spoke-length-calc.vercel.app/",
     codeUrl: "https://github.com/mikebikeking/spoke-length-calc",
     image: work3,
   },
   {
-    id: "portfolio-website",
+    id: "business-portfolio-website",
     title: "Portfolio Website",
     subtitle: "The Wheel Build",
     description:

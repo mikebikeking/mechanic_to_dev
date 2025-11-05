@@ -1,8 +1,10 @@
 import { useEffect, useMemo } from 'react';
 import { MenuIcon, XIcon } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { useApp } from '../context/useApp';
 import { appActions } from '../context/appActions';
 import { ThemeToggle } from './ThemeToggle';
+import { GearShift } from './GearShift';
 
 export function Navigation() {
   const { state, dispatch } = useApp();
@@ -74,30 +76,42 @@ export function Navigation() {
         <div className="flex items-center justify-between h-16">
           {/* Logo - Clickable to Home */}
           <div className="flex-shrink-0">
-            <button
+            <motion.button
               onClick={() => scrollToSection('home')}
-              className="text-2xl font-heading text-blue-700 dark:text-gold hover:text-blue-600 dark:hover:text-torch transition-colors cursor-pointer min-h-[44px] min-w-[44px] flex items-center justify-center"
+              className="text-2xl font-heading text-blue-700 dark:text-gold hover:text-blue-600 dark:hover:text-torch transition-colors cursor-pointer min-h-[44px] min-w-[44px] flex items-center justify-center gap-2 group"
               aria-label="Go to home"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95, y: 2 }}
+              transition={{ duration: 0.2 }}
             >
+              <GearShift size={18} className="opacity-0 group-hover:opacity-100 transition-opacity" />
               MK
-            </button>
+            </motion.button>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex md:items-center md:space-x-4">
             <div className="flex items-baseline space-x-8">
               {navItems.map(item => (
-                <button
+                <motion.button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`px-3 py-2 text-sm font-medium transition-colors min-h-[44px] flex items-center ${
+                  className={`px-3 py-2 text-sm font-medium transition-colors min-h-[44px] flex items-center gap-2 group ${
                     activeSection === item.id
                       ? 'text-blue-700 dark:text-gold border-b-2 border-blue-700 dark:border-gold'
                       : 'text-gray-700 dark:text-textPrimary hover:text-blue-600 dark:hover:text-gold'
                   }`}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95, y: 2 }}
+                  transition={{ duration: 0.2 }}
                 >
+                  <GearShift 
+                    size={14} 
+                    variant="compact" 
+                    className={activeSection === item.id ? 'opacity-100' : 'opacity-0 group-hover:opacity-100 transition-opacity'}
+                  />
                   {item.label}
-                </button>
+                </motion.button>
               ))}
             </div>
             
@@ -124,17 +138,24 @@ export function Navigation() {
         <div className="md:hidden bg-white dark:bg-gunmetal border-t border-blue-200 dark:border-blueprint/20">
           <div className="px-2 pt-2 pb-3 space-y-2">
             {navItems.map(item => (
-              <button
+              <motion.button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`block w-full text-left px-4 py-3 text-base font-medium min-h-[48px] mobile-nav-link ${
+                className={`w-full text-left px-4 py-3 text-base font-medium min-h-[48px] mobile-nav-link flex items-center gap-2 group ${
                   activeSection === item.id
                     ? 'text-blue-700 dark:text-gold bg-blue-50 dark:bg-blueprint/10'
                     : 'text-gray-700 dark:text-textPrimary hover:text-blue-600 dark:hover:text-gold hover:bg-blue-50 dark:hover:bg-blueprint/5'
                 }`}
+                whileTap={{ scale: 0.98, x: 4 }}
+                transition={{ duration: 0.2 }}
               >
+                <GearShift 
+                  size={14} 
+                  variant="compact" 
+                  className={activeSection === item.id ? 'opacity-100' : 'opacity-0 group-hover:opacity-100 transition-opacity'}
+                />
                 {item.label}
-              </button>
+              </motion.button>
             ))}
           </div>
         </div>

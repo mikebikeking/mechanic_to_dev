@@ -86,6 +86,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
               target="_blank"
               rel="noopener noreferrer"
               intensity={0.3}
+              showGear={true}
+              gearPosition="left"
               className="flex-1 px-4 py-3 bg-blue-600 dark:bg-gold text-white dark:text-gunmetal text-center font-heading text-sm hover:bg-blue-700 dark:hover:bg-torch transition-colors flex items-center justify-center gap-2 whitespace-nowrap"
             >
               <ExternalLinkIcon size={16} className="flex-shrink-0" />
@@ -96,6 +98,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
               target="_blank"
               rel="noopener noreferrer"
               intensity={0.3}
+              showGear={true}
+              gearPosition="left"
               className="flex-1 px-4 py-3 border-2 border-blue-600 dark:border-blueprint text-blue-600 dark:text-blueprint text-center font-heading text-sm hover:bg-blue-600 dark:hover:bg-blueprint hover:text-white dark:hover:text-gunmetal transition-colors flex items-center justify-center gap-2 whitespace-nowrap"
             >
               <GithubIcon size={16} className="flex-shrink-0" />

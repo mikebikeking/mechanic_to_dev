@@ -303,6 +303,8 @@ export function Hero() {
             <MagneticButton
               onClick={scrollToAbout}
               intensity={0.4}
+              showGear={true}
+              gearPosition="left"
               className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-gold dark:to-torch text-white dark:text-gunmetal font-heading text-lg transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl"
             >
               VIEW PORTFOLIO
@@ -311,6 +313,8 @@ export function Hero() {
             <MagneticLink
               href="#contact"
               intensity={0.4}
+              showGear={true}
+              gearPosition="left"
               className="px-8 py-4 border-2 border-blue-600 dark:border-blueprint text-blue-600 dark:text-blueprint font-heading text-lg transition-all duration-300 inline-flex items-center justify-center hover:bg-blue-600 dark:hover:bg-blueprint hover:text-white dark:hover:text-gunmetal"
             >
               GET IN TOUCH
