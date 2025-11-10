@@ -82,7 +82,7 @@ export const featuredProjects: Project[] = [
   {
     id: "spoke-length-calculator",
     title: "Spoke Length Calculator",
-    subtitle: "The Lightweight Climber",
+    subtitle: "The Wheel Build",
     description:
       "An advanced spoke calculator built with React and TypeScript that performs real-time geometric calculations for bicycle wheel building. The application handles complex hub and rim measurements, supporting multiple lacing patterns (radial, 1x-4x cross) while providing instant validation and error prevention. Delivers professional-grade accuracy matching industry tools used by bike shops worldwide.",
     tech: ["React", "JavaScript", "TailwindCSS"],
@@ -110,8 +110,8 @@ export const featuredProjects: Project[] = [
   },
   {
     id: "business-portfolio-website",
-    title: "Portfolio Website",
-    subtitle: "The Wheel Build",
+    title: "Business Portfolio Website",
+    subtitle: "The Lightweight Climber",
     description:
       "King Wheel Works is a modern, responsive website showcasing custom bicycle wheel building services. The site emphasizes craftsmanship, expertise, and provides a clear path for potential customers to initiate custom wheel build consultations.",
     tech: ["React", "TailwindCSS", "JavaScript"],
