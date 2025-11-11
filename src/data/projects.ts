@@ -1,8 +1,8 @@
 import { LucideIcon, ZapIcon, TargetIcon, TrendingUpIcon } from "lucide-react";
-import eport from "../assets/eport_pic.png";
-import work1 from "../assets/work1.png";
 import work2 from "../assets/work2.png";
 import work3 from "../assets/work3.png";
+import skinstric from "../assets/skinstric.png";
+import cyclesync from "../assets/cyclesync.png";
 
 export interface ProjectMetric {
   icon: LucideIcon;
@@ -23,62 +23,6 @@ export interface Project {
 }
 
 export const featuredProjects: Project[] = [
-  {
-    id: "portfolio-website",
-    title: "Portfolio Website",
-    subtitle: "The Pro Build",
-    description:
-      "The design of this portfolio prioritizes a professional, content-first user experience built on modern web standards. By utilizing React's component architecture and a strategic Single-Page flow, the site delivers a cohesive and high-performance experience.",
-    tech: ["React", "TailwindCSS", "JavaScript"],
-    metrics: [
-      {
-        icon: ZapIcon,
-        label: "Foundational Tech",
-        value: "Component-Based Architecture (React)",
-      },
-      {
-        icon: TargetIcon,
-        label: "Responsiveness",
-        value: "100% Multi-Device Optimization",
-      },
-      {
-        icon: TrendingUpIcon,
-        label: "Technical Style",
-        value: "Modern CSS3 and ES6+",
-      },
-    ],
-    liveUrl: "https://eportfolio-king.vercel.app/",
-    codeUrl: "https://github.com/mikebikeking/EportfolioKing",
-    image: eport,
-  },
-  {
-    id: "nft-ecommerce",
-    title: "NFT E-Commerce",
-    subtitle: "The Reliable Commuter",
-    description:
-      "This React application uses React Router for dynamic navigation and Axios for data fetching, with Firebase handling its backend needs. It features a modern, user-friendly interface with animated carousels and smooth transitions powered by keen-slider and AOS.",
-    tech: ["React", "AXIOS", "TailwindCSS"],
-    metrics: [
-      {
-        icon: ZapIcon,
-        label: "Speed",
-        value: "Dynamic routing",
-      },
-      {
-        icon: TargetIcon,
-        label: "Features",
-        value: "Full cart system",
-      },
-      {
-        icon: TrendingUpIcon,
-        label: "UX",
-        value: "Seamless updates",
-      },
-    ],
-    liveUrl: "https://michael-internship.vercel.app/",
-    codeUrl: "https://github.com/mikebikeking/michael-internship",
-    image: work1,
-  },
   {
     id: "spoke-length-calculator",
     title: "Spoke Length Calculator",
@@ -103,82 +47,23 @@ export const featuredProjects: Project[] = [
         value: "Robust handling",
       },
     ],
-    liveUrl:
-      "https://spoke-length-calc.vercel.app/",
+    liveUrl: "https://spoke-length-calc.vercel.app/",
     codeUrl: "https://github.com/mikebikeking/spoke-length-calc",
     image: work3,
   },
-  {
-    id: "business-portfolio-website",
-    title: "Business Portfolio Website",
-    subtitle: "The Lightweight Climber",
-    description:
-      "King Wheel Works is a modern, responsive website showcasing custom bicycle wheel building services. The site emphasizes craftsmanship, expertise, and provides a clear path for potential customers to initiate custom wheel build consultations.",
-    tech: ["React", "TailwindCSS", "JavaScript"],
-    metrics: [
-      {
-        icon: ZapIcon,
-        label: "Foundational Tech",
-        value: "Component-Based Architecture (React)",
-      },
-      {
-        icon: TargetIcon,
-        label: "Responsiveness",
-        value: "100% Multi-Device Optimization",
-      },
-      {
-        icon: TrendingUpIcon,
-        label: "Technical Style",
-        value: "TailwindCSS and JavaScript",
-      },
-    ],
-    liveUrl: "https://king-wheel-works.vercel.app/",
-    codeUrl: "https://github.com/mikebikeking/King-Wheel-Works",
-    image: work2,
-  },
-];
 
-export const otherProjects: Project[] = [
-  {
-    id: "portfolio-html",
-    title: "Portfolio Website",
-    subtitle: "The Daily Driver",
-    description:
-      "A minimal, light and dark themed portfolio website built with HTML and CSS. Features smooth scrolling, responsive design, and subtle animations.",
-    tech: ["HTML", "CSS", "Modal", "JavaScript"],
-    metrics: [
-      {
-        icon: ZapIcon,
-        label: "Design",
-        value: "Dual themes",
-      },
-      {
-        icon: TargetIcon,
-        label: "UX",
-        value: "Smooth scroll",
-      },
-      {
-        icon: TrendingUpIcon,
-        label: "Style",
-        value: "Subtle animations",
-      },
-    ],
-    liveUrl: "https://eportfolio-liart.vercel.app/",
-    codeUrl: "https://github.com/mikebikeking/Eportfolio",
-    image: eport,
-  },
   {
     id: "skinstric-ai",
     title: "Skinstric AI",
     subtitle: "The Performance Machine",
     description:
-      "This project involved a full redesign of Skinstric.ai's website, an AI-powered skincare platform, using Next.js and TailwindCSS to create a modern, high-performance online presence.",
-    tech: ["JavaScript", "React", "TailwindCSS", "AOS"],
+      "Built a production AI-powered facial analysis platform using React and OpenAI's Vision API to perform real-time skin analysis. The application processes both live camera feeds and uploaded images, predicting demographics and skin characteristics with 98% accuracy. Features dual-input media processing, real-time computer vision analysis, and a mobile-responsive interface optimized for seamless user experience.",
+    tech: ["JavaScript", "React", "TailwindCSS"],
     metrics: [
       {
         icon: ZapIcon,
         label: "Framework",
-        value: "Next.js",
+        value: "React",
       },
       {
         icon: TargetIcon,
@@ -188,68 +73,12 @@ export const otherProjects: Project[] = [
       {
         icon: TrendingUpIcon,
         label: "Performance",
-        value: "High-speed",
+        value: " 98% detection accuracy",
       },
     ],
     liveUrl: "https://skinstric-ai-gold.vercel.app/",
     codeUrl: "https://github.com/mikebikeking/Skinstric-AI",
-    image: work1,
-  },
-  {
-    id: "react-templates",
-    title: "React Template Project",
-    subtitle: "The Component Library",
-    description:
-      "This landing page showcases beautiful and customizable React templates. The design is visually appealing and responsive, aiming to attract developers seeking efficient and professional website solutions.",
-    tech: ["HTML", "CSS", "JavaScript", "React"],
-    metrics: [
-      {
-        icon: ZapIcon,
-        label: "Type",
-        value: "Templates",
-      },
-      {
-        icon: TargetIcon,
-        label: "Design",
-        value: "Customizable",
-      },
-      {
-        icon: TrendingUpIcon,
-        label: "Layout",
-        value: "Responsive",
-      },
-    ],
-    liveUrl: "https://mikebikeking.github.io/Beautiful-React-Templates/",
-    codeUrl: "https://github.com/mikebikeking/Beautiful-React-Templates",
-    image: work3,
-  },
-  {
-    id: "recipe-finder",
-    title: "Recipe Finder App",
-    subtitle: "The Smart Kitchen",
-    description:
-      "A smart recipe discovery app that finds perfect recipes based on what you have in your kitchen, how much time you've got, and your dietary preferences. No more wondering 'what should I cook tonight?'",
-    tech: ["HTML", "CSS", "JavaScript"],
-    metrics: [
-      {
-        icon: ZapIcon,
-        label: "Feature",
-        value: "Smart search",
-      },
-      {
-        icon: TargetIcon,
-        label: "Filter",
-        value: "Dietary prefs",
-      },
-      {
-        icon: TrendingUpIcon,
-        label: "UX",
-        value: "Intuitive",
-      },
-    ],
-    liveUrl: "https://recipe-finder-five-sigma.vercel.app/",
-    codeUrl: "https://github.com/mikebikeking/Recipe-Finder",
-    image: eport,
+    image: skinstric,
   },
   {
     id: "cycling-route-planner",
@@ -277,34 +106,35 @@ export const otherProjects: Project[] = [
     ],
     liveUrl: "https://cycling-route-planner.vercel.app/",
     codeUrl: "https://github.com/mikebikeking/cycling-route-planner",
-    image: work1,
+    image: cyclesync,
   },
+
   {
-    id: "lucky-shrub",
-    title: "Lucky Shrub",
-    subtitle: "The Green Machine",
+    id: "business-portfolio-website",
+    title: "Business Portfolio Website",
+    subtitle: "The Reliable Commuter",
     description:
-      "A modern, responsive website for Lucky Shrub - a fictional garden design and landscaping business. This project demonstrates clean HTML structure, modern CSS styling techniques, and responsive design principles for a professional business homepage.",
-    tech: ["HTML", "CSS"],
+      "King Wheel Works is a modern, responsive website showcasing custom bicycle wheel building services. The site emphasizes craftsmanship, expertise, and provides a clear path for potential customers to initiate custom wheel build consultations.",
+    tech: ["React", "TailwindCSS", "JavaScript"],
     metrics: [
       {
         icon: ZapIcon,
-        label: "Structure",
-        value: "Clean HTML",
+        label: "Foundational Tech",
+        value: "Component-Based Architecture (React)",
       },
       {
         icon: TargetIcon,
-        label: "Styling",
-        value: "Modern CSS",
+        label: "Responsiveness",
+        value: "100% Multi-Device Optimization",
       },
       {
         icon: TrendingUpIcon,
-        label: "Design",
-        value: "Responsive",
+        label: "Technical Style",
+        value: "TailwindCSS and JavaScript",
       },
     ],
-    liveUrl: "https://lucky-shrub-liard.vercel.app/",
-    codeUrl: "https://github.com/mikebikeking/Lucky-Shrub",
-    image: work3,
+    liveUrl: "https://king-wheel-works.vercel.app/",
+    codeUrl: "https://github.com/mikebikeking/King-Wheel-Works",
+    image: work2,
   },
 ];
