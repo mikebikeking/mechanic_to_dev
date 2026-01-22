@@ -2,7 +2,7 @@ import { LucideIcon, ZapIcon, TargetIcon, TrendingUpIcon } from "lucide-react";
 import work2 from "../assets/work2.png";
 import work3 from "../assets/work3.png";
 import skinstric from "../assets/skinstric.png";
-import cyclesync from "../assets/cyclesync.png";
+import twoWheel from "../assets/two_wheels_daily.png";
 
 export interface ProjectMetric {
   icon: LucideIcon;
@@ -81,32 +81,32 @@ export const featuredProjects: Project[] = [
     image: skinstric,
   },
   {
-    id: "cycling-route-planner",
-    title: "Cycling Route Planner",
+    id: "two-wheels-daily",
+    title: "Two Wheels Daily",
     subtitle: "The Navigator",
     description:
-      "A smart cycling route planner and weather intelligence platform designed specifically for Boston cyclists. The app provides AI-powered recommendations, real-time weather analysis, and interactive route mapping to help cyclists make informed decisions about when and where to ride in the Boston metropolitan area.",
-    tech: ["React", "TypeScript", "TailwindCSS", "Vite"],
+      "A modern cycling news aggregator delivering curated content from 7 sources directly to your inbox. Every morning, pro racing, gear drops, industry news, and weekend ride inspiration—no noise, just the news that matters.",
+    tech: ["Next.js", "React", "TailwindCSS", "Vercel"],
     metrics: [
       {
         icon: ZapIcon,
-        label: "AI",
-        value: "Smart routing",
+        label: "API Integration",
+        value: "Next.js API Routes",
       },
       {
         icon: TargetIcon,
-        label: "Data",
-        value: "Real-time",
+        label: "Feed Parsing",
+        value: "Native Node.js RSS parsing",
       },
       {
         icon: TrendingUpIcon,
-        label: "Location",
-        value: "Boston-focused",
+        label: "Caching",
+        value: "In-memory cache with 1-hour TTL",
       },
     ],
-    liveUrl: "https://cycling-route-planner.vercel.app/",
-    codeUrl: "https://github.com/mikebikeking/cycling-route-planner",
-    image: cyclesync,
+    liveUrl: "https://two-wheels-daily.vercel.app/",
+    codeUrl: "https://github.com/mikebikeking/two-wheels-daily",
+    image: twoWheel,
   },
 
   {
