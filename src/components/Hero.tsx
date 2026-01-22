@@ -220,8 +220,6 @@ export function Hero() {
                 delay: 0.3,
               }}
             >
-              PRECISION
-              <br />
               <motion.span
                 className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 dark:from-gold dark:via-torch dark:to-blueprint"
                 animate={{
@@ -236,10 +234,11 @@ export function Hero() {
                   backgroundSize: "200% 200%",
                 }}
               >
-                ENGINEERING
+                
+                Two Wheels
+                <br />
+              One Code
               </motion.span>
-              <br />
-              MEETS CODE
             </motion.h1>
           </motion.div>
           <motion.div
