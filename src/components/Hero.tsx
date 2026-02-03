@@ -83,7 +83,7 @@ export function Hero() {
       role="banner"
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-transparent pt-16"
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-white/30 to-blue-50/50 dark:from-black/70 dark:via-gunmetal/50 dark:to-black/70">
+      <div className="absolute inset-0 bg-blue-50/50 dark:bg-black/70">
         <motion.div
           className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,214,10,0.15),transparent_50%)]"
           style={{
@@ -221,18 +221,7 @@ export function Hero() {
               }}
             >
               <motion.span
-                className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 dark:from-gold dark:via-torch dark:to-blueprint"
-                animate={{
-                  backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-                }}
-                transition={{
-                  duration: 5,
-                  repeat: Infinity,
-                  ease: "linear",
-                }}
-                style={{
-                  backgroundSize: "200% 200%",
-                }}
+                className="text-blue-600 dark:text-gold"
               >
                 
                 Two Wheels
@@ -260,7 +249,7 @@ export function Hero() {
             <p className="text-xl sm:text-2xl font-body max-w-2xl text-gray-600 dark:text-textSecondary min-h-[3.5rem] flex items-center">
               {displayedText}
             </p>
-            <CodeIcon className="text-blue-600 dark:text-blueprint" size={24} />
+            <CodeIcon className="text-blue-600 dark:text-gold" size={24} />
           </motion.div>
           <motion.div
             initial={{
@@ -280,7 +269,7 @@ export function Hero() {
             <div className="text-3xl sm:text-4xl font-heading text-blue-700 dark:text-gold">
               MICHAEL KING
             </div>
-            <div className="text-lg text-blue-600 dark:text-blueprint font-mono">
+            <div className="text-lg text-blue-600 dark:text-gold font-mono">
               Frontend Developer | React Specialist
             </div>
           </motion.div>
@@ -304,7 +293,7 @@ export function Hero() {
               intensity={0.4}
               showGear={true}
               gearPosition="left"
-              className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-gold dark:to-torch text-white dark:text-gunmetal font-heading text-lg transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl"
+              className="group px-8 py-4 bg-blue-600 dark:bg-gold text-white dark:text-gunmetal font-heading text-lg transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl"
             >
               VIEW PORTFOLIO
               <ChevronDownIcon size={20} />
@@ -314,7 +303,7 @@ export function Hero() {
               intensity={0.4}
               showGear={true}
               gearPosition="left"
-              className="px-8 py-4 border-2 border-blue-600 dark:border-blueprint text-blue-600 dark:text-blueprint font-heading text-lg transition-all duration-300 inline-flex items-center justify-center hover:bg-blue-600 dark:hover:bg-blueprint hover:text-white dark:hover:text-gunmetal"
+              className="px-8 py-4 border-2 border-blue-600 dark:border-gold text-blue-600 dark:text-gold font-heading text-lg transition-all duration-300 inline-flex items-center justify-center hover:bg-blue-600 dark:hover:bg-gold hover:text-white dark:hover:text-gunmetal"
             >
               GET IN TOUCH
             </MagneticLink>
