@@ -69,22 +69,22 @@ body.dark {
 
 :root:not(.dark) ::-webkit-scrollbar-thumb,
 .light ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #3B82F6, #9333EA);
+  background: #3B82F6;
   border-radius: 6px;
 }
 
 :root:not(.dark) ::-webkit-scrollbar-thumb:hover,
 .light ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #9333EA, #3B82F6);
+  background: #3B82F6;
 }
 
 .dark ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #FFD700, #FF6B35);
+  background: #FFD60A;
   border-radius: 6px;
 }
 
 .dark ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #FF6B35, #FFD700);
+  background: #FFD60A;
 }
 
 @media (min-width: 768px) {

@@ -86,12 +86,12 @@ export const featuredProjects: Project[] = [
     subtitle: "The Navigator",
     description:
       "A modern cycling news aggregator delivering curated content from 7 sources directly to your inbox. Every morning, pro racing, gear drops, industry news, and weekend ride inspiration—no noise, just the news that matters.",
-    tech: ["Next.js", "React", "TailwindCSS", "Vercel"],
+    tech: ["React", "TailwindCSS", "Vercel"],
     metrics: [
       {
         icon: ZapIcon,
         label: "API Integration",
-        value: "Next.js API Routes",
+        value: "API Routes",
       },
       {
         icon: TargetIcon,

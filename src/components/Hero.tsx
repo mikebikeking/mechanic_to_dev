@@ -68,8 +68,8 @@ export function Hero() {
     );
   }, []);
 
-  const scrollToAbout = () => {
-    const element = document.getElementById("about");
+  const scrollToProjects = () => {
+    const element = document.getElementById("projects");
     if (element) {
       element.scrollIntoView({
         behavior: "smooth",
@@ -289,7 +289,7 @@ export function Hero() {
             className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
           >
             <MagneticButton
-              onClick={scrollToAbout}
+              onClick={scrollToProjects}
               intensity={0.4}
               showGear={true}
               gearPosition="left"
