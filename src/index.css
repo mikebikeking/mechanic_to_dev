@@ -87,15 +87,6 @@ body.dark {
   background: #FFD60A;
 }
 
-@media (min-width: 768px) {
-  * {
-    cursor: none !important;
-  }
-  
-  a, button, input, textarea, select {
-    cursor: pointer !important;
-  }
-}
 
 * {
   -webkit-tap-highlight-color: rgba(59, 130, 246, 0.15);

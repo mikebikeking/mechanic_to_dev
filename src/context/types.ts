@@ -1,15 +1,3 @@
-export interface AppState {
-  isLoading: boolean;
-  activeSection: string;
-  isMenuOpen: boolean;
-  theme: 'light' | 'dark';
-  error: string | null;
-}
-
-export type AppAction =
-  | { type: 'SET_LOADING'; payload: boolean }
-  | { type: 'SET_ACTIVE_SECTION'; payload: string }
-  | { type: 'SET_MENU_OPEN'; payload: boolean }
-  | { type: 'SET_THEME'; payload: 'light' | 'dark' }
-  | { type: 'SET_ERROR'; payload: string | null }
-  | { type: 'CLEAR_ERROR' };
+export const SECTION_IDS = ['home', 'about', 'skills', 'projects', 'workspace', 'experience', 'education', 'contact'] as const;
+export type SectionId = typeof SECTION_IDS[number];
+export type Theme = 'light' | 'dark';

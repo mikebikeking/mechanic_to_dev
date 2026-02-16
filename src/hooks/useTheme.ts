@@ -1,16 +1,13 @@
 import { useEffect } from 'react';
-import { useApp } from '../context/useApp';
-import { appActions } from '../context/appActions';
+import { useApp } from '../context/AppContext';
 
-export const useTheme = () => {
-  const { state, dispatch } = useApp();
-  const { theme } = state;
+export function useTheme() {
+  const { theme, setTheme } = useApp();
 
   useEffect(() => {
-    // Apply theme to document on mount and when theme changes
     const root = document.documentElement;
     const body = document.body;
-    
+
     if (theme === 'dark') {
       root.classList.add('dark');
       root.classList.remove('light');
@@ -22,15 +19,13 @@ export const useTheme = () => {
       body.classList.add('light');
       body.classList.remove('dark');
     }
-    
-    // Save to localStorage
+
     localStorage.setItem('theme', theme);
   }, [theme]);
 
   const toggleTheme = () => {
-    const newTheme = theme === 'dark' ? 'light' : 'dark';
-    dispatch(appActions.setTheme(newTheme));
+    setTheme(theme === 'dark' ? 'light' : 'dark');
   };
 
   return { theme, toggleTheme };
-};
+}

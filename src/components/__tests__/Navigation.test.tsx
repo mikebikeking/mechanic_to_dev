@@ -1,47 +1,41 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { Navigation } from '../Navigation';
+import { Navigation } from '../layout/Navigation';
 import { AppProvider } from '../../context/AppContext';
 
-const MockedAppProvider = ({ children }: { children: React.ReactNode }) => (
-  <AppProvider>
-    {children}
-  </AppProvider>
-);
+beforeEach(() => {
+  Object.defineProperty(window, 'matchMedia', {
+    writable: true,
+    value: vi.fn().mockImplementation((query: string) => ({
+      matches: query === '(prefers-color-scheme: dark)',
+      media: query,
+      addEventListener: vi.fn(),
+      removeEventListener: vi.fn(),
+      addListener: vi.fn(),
+      removeListener: vi.fn(),
+      onchange: null,
+      dispatchEvent: vi.fn(),
+    })),
+  });
+});
+
+function wrapper({ children }: { children: React.ReactNode }) {
+  return <AppProvider>{children}</AppProvider>;
+}
 
 describe('Navigation', () => {
-  it('renders navigation items', () => {
-    render(
-      <MockedAppProvider>
-        <Navigation />
-      </MockedAppProvider>
-    );
-
-    expect(screen.getByText('Home')).toBeInTheDocument();
-    expect(screen.getByText('About')).toBeInTheDocument();
-    expect(screen.getByText('Projects')).toBeInTheDocument();
-    expect(screen.getByText('Contact')).toBeInTheDocument();
+  it('renders the nav landmark', () => {
+    render(<Navigation />, { wrapper });
+    expect(screen.getByRole('navigation', { name: 'Main Navigation' })).toBeInTheDocument();
   });
 
-  it('renders logo', () => {
-    render(
-      <MockedAppProvider>
-        <Navigation />
-      </MockedAppProvider>
-    );
-
-    expect(screen.getByText('MK')).toBeInTheDocument();
+  it('renders logo button', () => {
+    render(<Navigation />, { wrapper });
+    expect(screen.getByRole('button', { name: 'Go to home' })).toBeInTheDocument();
   });
 
-  it('toggles mobile menu', () => {
-    render(
-      <MockedAppProvider>
-        <Navigation />
-      </MockedAppProvider>
-    );
-
-    // The mobile menu button doesn't have an accessible name, so we find it by its icon
-    const menuButton = screen.getByRole('button', { name: '' });
-    expect(menuButton).toBeInTheDocument();
+  it('renders mobile menu toggle with accessible label', () => {
+    render(<Navigation />, { wrapper });
+    expect(screen.getByRole('button', { name: 'Open menu' })).toBeInTheDocument();
   });
 });

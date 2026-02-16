@@ -8,11 +8,20 @@ declare global {
   }
 }
 
-interface GithubStats {
+export interface GithubStats {
   totalCommits: number;
   totalRepos: number;
   totalStars: number;
   contributionsThisYear: number;
+}
+
+interface RepoNode {
+  stargazerCount: number;
+  defaultBranchRef?: {
+    target?: {
+      history?: { totalCount: number };
+    };
+  };
 }
 
 class GithubService {
@@ -78,17 +87,15 @@ class GithubService {
         throw new Error(data.errors[0].message);
       }
 
-      const repos = data.data.user.repositories.nodes;
+      const repos: RepoNode[] = data.data.user.repositories.nodes;
 
       const totalStars = repos.reduce(
-        (acc: number, repo: { stargazerCount: number }) => acc + repo.stargazerCount,
+        (acc, repo) => acc + repo.stargazerCount,
         0
       );
 
       const totalCommits = repos.reduce(
-        (acc: number, repo: { defaultBranchRef?: { target?: { history?: { totalCount: number } } } }) => {
-          return acc + (repo.defaultBranchRef?.target?.history?.totalCount || 0);
-        },
+        (acc, repo) => acc + (repo.defaultBranchRef?.target?.history?.totalCount || 0),
         0
       );
 
@@ -105,5 +112,4 @@ class GithubService {
   }
 }
 
-// Export singleton instance
 export const githubService = new GithubService();
