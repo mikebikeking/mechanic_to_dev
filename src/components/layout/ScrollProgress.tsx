@@ -10,9 +10,8 @@ export const ScrollProgress: React.FC = () => {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 right-0 h-1 bg-blue-600 dark:bg-gold origin-left z-[100]"
+      className="fixed top-0 left-0 right-0 h-1 bg-safety origin-left z-[100]"
       style={{ scaleX }}
     />
   );
 };
-

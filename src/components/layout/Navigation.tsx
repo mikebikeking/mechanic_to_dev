@@ -1,9 +1,7 @@
 import { useEffect, useRef, useCallback } from 'react';
 import { MenuIcon, XIcon } from 'lucide-react';
-import { motion } from 'framer-motion';
 import { useApp } from '../../context/AppContext';
 import { ThemeToggle } from '../ui/ThemeToggle';
-import { GearShift } from '../ui/GearShift';
 import { SECTION_IDS, type SectionId } from '../../context/types';
 
 const NAV_ITEMS: { id: SectionId; label: string }[] = [
@@ -11,7 +9,6 @@ const NAV_ITEMS: { id: SectionId; label: string }[] = [
   { id: 'about', label: 'About' },
   { id: 'skills', label: 'Skills' },
   { id: 'projects', label: 'Projects' },
-  { id: 'workspace', label: 'Workspace' },
   { id: 'experience', label: 'Experience' },
   { id: 'contact', label: 'Contact' },
 ];
@@ -62,45 +59,33 @@ export function Navigation() {
   }, [setMenuOpen]);
 
   return (
-    <nav aria-label="Main Navigation" className="fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-gunmetal/95 backdrop-blur-sm border-b border-blue-200 dark:border-blueprint/20 transition-colors duration-300">
+    <nav aria-label="Main Navigation" className="fixed top-0 left-0 right-0 z-50 bg-[var(--color-surface)]/95 backdrop-blur-sm border-b border-[var(--color-border)] transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0">
-            <motion.button
+            <button
               onClick={() => scrollToSection('home')}
-              className="text-2xl font-heading text-blue-700 dark:text-gold hover:text-blue-600 dark:hover:text-torch transition-colors cursor-pointer min-h-[44px] min-w-[44px] flex items-center justify-center gap-2 group"
+              className="text-2xl font-heading text-[var(--color-text-primary)] hover:text-safety transition-colors cursor-pointer min-h-[44px] min-w-[44px] flex items-center justify-center"
               aria-label="Go to home"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95, y: 2 }}
-              transition={{ duration: 0.2 }}
             >
-              <GearShift size={18} className="opacity-0 group-hover:opacity-100 transition-opacity" />
               MK
-            </motion.button>
+            </button>
           </div>
 
           <div className="hidden md:flex md:items-center md:space-x-4">
             <div className="flex items-baseline space-x-8">
               {NAV_ITEMS.map(item => (
-                <motion.button
+                <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`px-3 py-2 text-sm font-medium transition-colors min-h-[44px] flex items-center gap-2 group ${
+                  className={`px-3 py-2 text-sm font-medium transition-colors min-h-[44px] flex items-center ${
                     activeSection === item.id
-                      ? 'text-blue-700 dark:text-gold border-b-2 border-blue-700 dark:border-gold'
-                      : 'text-gray-700 dark:text-textPrimary hover:text-blue-600 dark:hover:text-gold'
+                      ? 'text-safety border-b-2 border-safety'
+                      : 'text-[var(--color-text-primary)] hover:text-safety'
                   }`}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95, y: 2 }}
-                  transition={{ duration: 0.2 }}
                 >
-                  <GearShift
-                    size={14}
-                    variant="compact"
-                    className={activeSection === item.id ? 'opacity-100' : 'opacity-0 group-hover:opacity-100 transition-opacity'}
-                  />
                   {item.label}
-                </motion.button>
+                </button>
               ))}
             </div>
             <ThemeToggle />
@@ -110,7 +95,7 @@ export function Navigation() {
             <ThemeToggle />
             <button
               onClick={() => setMenuOpen(!isMenuOpen)}
-              className="text-gray-700 dark:text-textPrimary hover:text-blue-600 dark:hover:text-gold p-2 min-h-[44px] min-w-[44px] flex items-center justify-center"
+              className="text-[var(--color-text-primary)] hover:text-safety p-2 min-h-[44px] min-w-[44px] flex items-center justify-center"
               aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             >
               {isMenuOpen ? <XIcon size={24} /> : <MenuIcon size={24} />}
@@ -120,27 +105,20 @@ export function Navigation() {
       </div>
 
       {isMenuOpen && (
-        <div className="md:hidden bg-white dark:bg-gunmetal border-t border-blue-200 dark:border-blueprint/20">
+        <div className="md:hidden bg-[var(--color-surface)] border-t border-[var(--color-border)]">
           <div className="px-2 pt-2 pb-3 space-y-2">
             {NAV_ITEMS.map(item => (
-              <motion.button
+              <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`w-full text-left px-4 py-3 text-base font-medium min-h-[48px] mobile-nav-link flex items-center gap-2 group ${
+                className={`w-full text-left px-4 py-3 text-base font-medium min-h-[48px] ${
                   activeSection === item.id
-                    ? 'text-blue-700 dark:text-gold bg-blue-50 dark:bg-blueprint/10'
-                    : 'text-gray-700 dark:text-textPrimary hover:text-blue-600 dark:hover:text-gold hover:bg-blue-50 dark:hover:bg-blueprint/5'
+                    ? 'text-safety'
+                    : 'text-[var(--color-text-primary)] hover:text-safety'
                 }`}
-                whileTap={{ scale: 0.98, x: 4 }}
-                transition={{ duration: 0.2 }}
               >
-                <GearShift
-                  size={14}
-                  variant="compact"
-                  className={activeSection === item.id ? 'opacity-100' : 'opacity-0 group-hover:opacity-100 transition-opacity'}
-                />
                 {item.label}
-              </motion.button>
+              </button>
             ))}
           </div>
         </div>

@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import { Cog } from 'lucide-react';
 
 export function LoadingAnimation() {
   const [isLoading, setIsLoading] = useState(true);
@@ -13,10 +14,11 @@ export function LoadingAnimation() {
     <AnimatePresence>
       {isLoading && (
         <motion.div
-          initial={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3 }}
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-white dark:bg-gunmetal"
+          initial={{ clipPath: 'inset(0 0 0 0)' }}
+          exit={{ clipPath: 'inset(0 0 100% 0)' }}
+          transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
+          className="fixed inset-0 z-[100] flex items-center justify-center"
+          style={{ backgroundColor: 'var(--color-bg)' }}
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -24,10 +26,16 @@ export function LoadingAnimation() {
             transition={{ duration: 0.4 }}
             className="text-center"
           >
-            <div className="text-3xl font-heading text-blue-700 dark:text-gold mb-2">
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
+              className="flex items-center justify-center mb-4"
+            >
+              <Cog size={40} className="text-safety" />
+            </motion.div>
+            <div className="text-3xl font-heading" style={{ color: 'var(--color-text-primary)' }}>
               MK
             </div>
-            <div className="w-12 h-0.5 bg-blue-500 dark:bg-gold mx-auto" />
           </motion.div>
         </motion.div>
       )}

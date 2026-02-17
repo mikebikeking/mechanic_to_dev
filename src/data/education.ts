@@ -38,4 +38,12 @@ export const credentials: Credential[] = [
     year: 'Feb 2025',
     color: 'gold',
   },
+  {
+    icon: WrenchIcon,
+    title: 'IBM Product Manager',
+    institution: 'IBM',
+    year: 'Dec 2025',
+    color: 'torch',
+
+  }
 ];
