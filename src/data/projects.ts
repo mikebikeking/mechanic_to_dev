@@ -1,8 +1,9 @@
-import { LucideIcon, ZapIcon, TargetIcon, TrendingUpIcon } from "lucide-react";
+import { LucideIcon, ZapIcon, TargetIcon, TrendingUpIcon, MapIcon, DatabaseIcon } from "lucide-react";
 import work2 from "../assets/work2.png";
 import work3 from "../assets/work3.png";
 import skinstric from "../assets/skinstric.png";
 import twoWheel from "../assets/two_wheels_daily.png";
+import cyclingPlanner from "../assets/cycling-planner.png";
 
 export interface ProjectMetric {
   icon: LucideIcon;
@@ -13,7 +14,6 @@ export interface ProjectMetric {
 export interface Project {
   id: string;
   title: string;
-  subtitle: string;
   description: string;
   tech: string[];
   metrics: ProjectMetric[];
@@ -26,7 +26,6 @@ export const featuredProjects: Project[] = [
   {
     id: "spoke-length-calculator",
     title: "Spoke Length Calculator",
-    subtitle: "The Wheel Build",
     description:
       "An advanced spoke calculator built with React and TypeScript that performs real-time geometric calculations for bicycle wheel building. The application handles complex hub and rim measurements, supporting multiple lacing patterns (radial, 1x-4x cross) while providing instant validation and error prevention. Delivers professional-grade accuracy matching industry tools used by bike shops worldwide.",
     tech: ["React", "JavaScript", "TailwindCSS"],
@@ -55,7 +54,6 @@ export const featuredProjects: Project[] = [
   {
     id: "skinstric-ai",
     title: "Skinstric AI",
-    subtitle: "The Performance Machine",
     description:
       "Built a production AI-powered facial analysis platform using React and OpenAI's Vision API to perform real-time skin analysis. The application processes both live camera feeds and uploaded images, predicting demographics and skin characteristics with 98% accuracy. Features dual-input media processing, real-time computer vision analysis, and a mobile-responsive interface optimized for seamless user experience.",
     tech: ["JavaScript", "React", "TailwindCSS"],
@@ -83,7 +81,6 @@ export const featuredProjects: Project[] = [
   {
     id: "two-wheels-daily",
     title: "Two Wheels Daily",
-    subtitle: "The Navigator",
     description:
       "A modern cycling news aggregator delivering curated content from 7 sources directly to your inbox. Every morning, pro racing, gear drops, industry news, and weekend ride inspiration—no noise, just the news that matters.",
     tech: ["React", "TailwindCSS", "Vercel"],
@@ -112,7 +109,6 @@ export const featuredProjects: Project[] = [
   {
     id: "business-portfolio-website",
     title: "Business Portfolio Website",
-    subtitle: "The Reliable Commuter",
     description:
       "King Wheel Works is a modern, responsive website showcasing custom bicycle wheel building services. The site emphasizes craftsmanship, expertise, and provides a clear path for potential customers to initiate custom wheel build consultations.",
     tech: ["React", "TailwindCSS", "JavaScript"],
@@ -136,5 +132,32 @@ export const featuredProjects: Project[] = [
     liveUrl: "https://king-wheel-works.vercel.app/",
     codeUrl: "https://github.com/mikebikeking/King-Wheel-Works",
     image: work2,
+  },
+  {
+    id: "Cycling-Planner",
+    title: "Cycling Planner",
+    description:
+"An intelligent routing tool that optimizes your rides based on personal preferences. It integrates your calendar and real-time weather data to pinpoint the ideal window for your next session.",
+    tech: ["React", "TailwindCSS", "JavaScript"],
+    metrics: [
+      {
+        icon: MapIcon,
+        label: "Geo",
+        value: "Leaflet.js / OpenStreetMap ",
+      },
+      {
+        icon: TargetIcon,
+        label: "Optimization",
+        value: "Cross-platform Responsie Design",
+      },
+      {
+        icon: DatabaseIcon,
+        label: "Data",
+        value: "Weather & Google Calendar API",
+      },
+    ],
+    liveUrl: "https://cycling-route-planner.vercel.app/",
+    codeUrl: "https://github.com/mikebikeking/cycling-route-planner",
+    image: cyclingPlanner,
   },
 ];
